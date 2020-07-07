@@ -1,0 +1,20 @@
+{
+  "name": "porsche-notification-banner",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "start": "yarn build && http-server ./",
+    "build": "./node_modules/.bin/babel src --out-dir lib",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./lib"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-preset-minify": "^0.5.1",
+    "http-server": "^0.12.3"
+  }
+}
