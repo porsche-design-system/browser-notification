@@ -1,53 +1,105 @@
-const randomString = () => Math.random().toString(36).substr(2, 9);
-const rs = randomString();
+const rs = Math.random().toString(36).substr(2, 9);
 const bannerId = `nb-${rs}`;
 
 const locales = {
-  'cs_CZ': '',
-  'da_DK': '',
-  'de_DE': '',
-  'en_GB': {
-    'p1': 'Please note that from 1st of October 2020 you wont be able to access this site with your current browser.',
-    'p2': 'Use the latest version of',
-    'p3': 'instead - and get back on track.'
+  'cs': {
+    'c1': 'Czech',
+    'c2': 'Lorem ipsum...',
   },
-  'en_US': '',
-  'es_ES': '',
-  'et_EE': '',
-  'fi_FI': '',
-  'fr_FR': '',
-  'it_IT': '',
-  'ja_JP': '',
-  'ko_KR': '',
-  'lt_LT': '',
-  'lv_LV': '',
-  'nl_NL': '',
-  'no_NO': '',
-  'pl_PL': '',
-  'pt_PT': '',
-  'ru_RU': '',
-  'sv_SE': '',
-  'tr_TR': '',
-  'zh_CN': '',
-  'zh_TW': ''
+  'da': {
+    'c1': 'Danish',
+    'c2': 'Lorem ipsum...',
+  },
+  'de': {
+    'c1': 'Ende des Supports des Internet Explorer 11!',
+    'c2': 'Bitte beachten Sie, dass das Porsche Design System nicht länger den Internet Explorer 11 als Browser unterstützt. Wir empfehlen auf einen der folgenden Browser zu wechseln: ',
+  },
+  'en': {
+    'c1': 'IE 11 end of support!',
+    'c2': 'Please note that the Porsche Design System no longer supports Internet Explorer 11. Support will expires latest by 1st of October 2020. We recommend upgrading to the latest',
+  },
+  'es': {
+    'c1': 'Spanish',
+    'c2': 'Lorem ipsum...',
+  },
+  'et': {
+    'c1': 'Estonian',
+    'c2': 'Lorem ipsum...',
+  },
+  'fi': {
+    'c1': 'Finnish',
+    'c2': 'Lorem ipsum...',
+  },
+  'fr': {
+    'c1': 'France',
+    'c2': 'Lorem ipsum...',
+  },
+  'it': {
+    'c1': 'Italian',
+    'c2': 'Lorem ipsum...',
+  },
+  'ja': {
+    'c1': 'Japanese',
+    'c2': 'Lorem ipsum...',
+  },
+  'ko': {
+    'c1': 'Korean',
+    'c2': 'Lorem ipsum...',
+  },
+  'lt': {
+    'c1': 'Lithuanian',
+    'c2': 'Lorem ipsum...',
+  },
+  'lv': {
+    'c1': 'Lettish',
+    'c2': 'Lorem ipsum...',
+  },
+  'nl': {
+    'c1': 'Dutch',
+    'c2': 'Lorem ipsum...',
+  },
+  'no': {
+    'c1': 'Norwegian',
+    'c2': 'Lorem ipsum...',
+  },
+  'pl': {
+    'c1': 'Polish',
+    'c2': 'Lorem ipsum...',
+  },
+  'pt': {
+    'c1': 'Portuguese',
+    'c2': 'Lorem ipsum...',
+  },
+  'ru': {
+    'c1': 'Russian',
+    'c2': 'Lorem ipsum...',
+  },
+  'sv': {
+    'c1': 'Swedish',
+    'c2': 'Lorem ipsum...',
+  },
+  'tr': {
+    'c1': 'Turkish',
+    'c2': 'Lorem ipsum...',
+  },
+  'zh': {
+    'c1': 'Chinese',
+    'c2': 'Lorem ipsum...',
+  }
 }
+
+const getHtmlLang = document.getElementsByTagName('html')[0].getAttribute('lang').slice(0, 2);
+const lang = getHtmlLang && getHtmlLang in locales ? getHtmlLang : 'en';
 
 const html = `
 <div id="notification-banner-${rs}">
   <div class="content-wrapper-${rs}">
     <div class="content-${rs}">
       <div class="icon-${rs}">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
-          <path d="M11.49 13h1.01l.5-6h-2l.49 6zM11 15h2v2h-2z"></path>
-          <path d="M12 3a9 9 0 109 9 9 9 0 00-9-9zm0 17a8 8 0 118-8 8 8 0 01-8 8z"></path>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false"><path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/><path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/></svg>
       </div>
       <p class="description-${rs}">
-        Please note that from 1st of October 2020 you wont be able to access this site with your current browser.
-        <br />
-        Use the latest version of <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>,
-        <a href="https://www.microsoft.com/edge" target="_blank">Microsoft Edge</a>, or
-        <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> instead - and get back on track.
+        <b>${locales[lang].c1}</b> ${locales[lang].c2} <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>, <a href="https://www.microsoft.com/edge" target="_blank">Microsoft Edge Chromium</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> or <b>Safari</b>.
       </p>
     </div>
     <button type="button" class="button-close-${rs}" onclick="removeBanner();">
@@ -61,21 +113,31 @@ const html = `
 
 const css = `
 #notification-banner-${rs} {
+  position: absolute;
+  display: flex;
+  justify-content: center;
   padding-left: 7vw;
   padding-right: 7vw;
-  max-width: 1920px;
-  position: absolute;
-  top: 100px;
-  margin: 0px auto;
-  width: 100%;
+  top: -100%;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
   z-index: 99999;
+  opacity: 0;
+  transition: top 500ms ease 1000ms, opacity 500ms ease 1000ms;
+}
+
+#notification-banner-${rs}.loaded-${rs} {
+  top: 100px;
+  opacity: 1;
 }
 
 #notification-banner-${rs} .content-wrapper-${rs} {
   position: relative;
+  width: 100%;
+  max-width: 1536px;
   background-color: #fff5e5;
-  border-left: 8px solid #ff9b00;
+  border-top: 4px solid #ff9b00;
   box-shadow:
   0 2.8px 2.2px rgba(0, 0, 0, 0.034),
   0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -96,17 +158,19 @@ const css = `
 }
 
 #notification-banner-${rs} .description-${rs} {
-  padding: 4px 0 0 24px;
+  padding: 4px 24px 0 24px;
+  max-width: 948px;
   color: #000;
-  font-size: 14px;
+  font-size: 16px;
   font-family: PorscheNext-Regular, 'Arial Narrow', Arial, sans-serif;
   font-weight: normal;
-  line-height: 20px;
+  line-height: 24px;
   margin: 0;
 }
 
 #notification-banner-${rs} .description-${rs} a {
   color: #000;
+  font-weight: bold;
   text-decoration: underline;
   transition: color 0.24s ease;
 }
@@ -184,4 +248,8 @@ const minifySlottedStyles = (css) =>
   div.id = bannerId;
   document.body.appendChild(div);
   div.innerHTML = html;
+  const banner = document.getElementById(`notification-banner-${rs}`);
+  setTimeout(() => {
+    banner.classList.add(`loaded-${rs}`);
+  }, 500);
 })();
