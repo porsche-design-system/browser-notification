@@ -3,90 +3,16 @@
   const bannerId = `nb-${rs}`;
 
   const locales = {
-    'cs': {
-      'c1': 'Czech',
-      'c2': 'Lorem ipsum...',
-    },
-    'da': {
-      'c1': 'Danish',
-      'c2': 'Lorem ipsum...',
-    },
-    'de': {
-      'c1': 'Ende des Supports des Internet Explorer 11!',
-      'c2': 'Bitte beachten Sie, dass das Porsche Design System nicht länger den Internet Explorer 11 als Browser unterstützt. Wir empfehlen auf einen der folgenden Browser zu wechseln: ',
-    },
-    'en': {
-      'c1': 'IE 11 end of support!',
-      'c2': 'Please note that the Porsche Design System no longer supports Internet Explorer 11. Support will expires latest by 1st of October 2020. We recommend upgrading to the latest',
-    },
-    'es': {
-      'c1': 'Spanish',
-      'c2': 'Lorem ipsum...',
-    },
-    'et': {
-      'c1': 'Estonian',
-      'c2': 'Lorem ipsum...',
-    },
-    'fi': {
-      'c1': 'Finnish',
-      'c2': 'Lorem ipsum...',
-    },
-    'fr': {
-      'c1': 'France',
-      'c2': 'Lorem ipsum...',
-    },
-    'it': {
-      'c1': 'Italian',
-      'c2': 'Lorem ipsum...',
-    },
-    'ja': {
-      'c1': 'Japanese',
-      'c2': 'Lorem ipsum...',
-    },
-    'ko': {
-      'c1': 'Korean',
-      'c2': 'Lorem ipsum...',
-    },
-    'lt': {
-      'c1': 'Lithuanian',
-      'c2': 'Lorem ipsum...',
-    },
-    'lv': {
-      'c1': 'Lettish',
-      'c2': 'Lorem ipsum...',
-    },
-    'nl': {
-      'c1': 'Dutch',
-      'c2': 'Lorem ipsum...',
-    },
-    'no': {
-      'c1': 'Norwegian',
-      'c2': 'Lorem ipsum...',
-    },
-    'pl': {
-      'c1': 'Polish',
-      'c2': 'Lorem ipsum...',
-    },
-    'pt': {
-      'c1': 'Portuguese',
-      'c2': 'Lorem ipsum...',
-    },
-    'ru': {
-      'c1': 'Russian',
-      'c2': 'Lorem ipsum...',
-    },
-    'sv': {
-      'c1': 'Swedish',
-      'c2': 'Lorem ipsum...',
-    },
-    'tr': {
-      'c1': 'Turkish',
-      'c2': 'Lorem ipsum...',
-    },
-    'zh': {
-      'c1': 'Chinese',
-      'c2': 'Lorem ipsum...',
-    }
+    'de': '<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> oder <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'ru': '<strong>Обратите внимание, что используемый Вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> или <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'fr': '<strong>Veuillez noter que le navigateur utilisé n\'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de  <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> ou <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'en': '<strong>Please note that the used browser is no longer supported.</strong><br> It would be best to directly switch to the latest version of <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> or <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'it': '<strong>Si prega di notare che il browser utilizzato non è più supportato.</strong><br> Sarebbe meglio passare direttamente all\'ultima versione di <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> o <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'pt': '<strong>É favor notar que o navegador usado já não é suportado.</strong><br> Seria melhor mudar directamente para a versão mais recente do <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> ou <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'es': '<strong>Tenga en cuenta que el navegador utilizado ya no es compatible.</strong><br> Sería mejor cambiar directamente a la última versión de <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> o <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'ja': 'ご使用のブラウザはサポートされていませんのでご注意ください。直接、最新版の<br> <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>、<a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a>、<a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>に切り替えた方が良いでしょう。',
+    'ko': '<strong>Please note that the used browser is no longer supported.</strong><br> It would be best to directly switch to the latest version of <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> or <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
+    'zh': '请注意，所使用的浏览器已不支持。最好直接切换到最新版本的<br> <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>、<a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a>或<a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>。'
   }
 
   const getHtmlLang = document.getElementsByTagName('html')[0].getAttribute('lang').slice(0, 2);
@@ -99,11 +25,11 @@
         <div class="icon-${rs}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false"><path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/><path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/></svg>
         </div>
-        <p class="description-${rs}">
-          <b>${locales[lang].c1}</b> ${locales[lang].c2} <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>, <a href="https://www.microsoft.com/edge" target="_blank">Microsoft Edge Chromium</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> or <b>Safari</b>.
+        <p>
+          ${locales[lang]}
         </p>
       </div>
-      <button type="button" class="button-close-${rs}" onclick="removeBanner();">
+      <button type="button" onclick="removeBanner();">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
           <path d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"/>
         </svg>
@@ -158,7 +84,7 @@
     height: 48px;
   }
   
-  #notification-banner-${rs} .description-${rs} {
+  #notification-banner-${rs} p {
     padding: 4px 24px 0 24px;
     max-width: 948px;
     color: #000;
@@ -169,18 +95,19 @@
     margin: 0;
   }
   
-  #notification-banner-${rs} .description-${rs} a {
+  #notification-banner-${rs} p > a {
     color: #000;
     font-weight: bold;
     text-decoration: underline;
     transition: color 0.24s ease;
+    white-space: nowrap;
   }
   
-  #notification-banner-${rs} .description-${rs} a:hover {
+  #notification-banner-${rs} p > a:hover {
     color: #d5001c;
   }
   
-  #notification-banner-${rs} .button-close-${rs} {
+  #notification-banner-${rs} button {
     width: 24px;
     height: 24px;
     border: none;
@@ -195,15 +122,15 @@
     transition: color 0.24s ease;
   }
   
-  #notification-banner-${rs} .button-close-${rs} svg {
+  #notification-banner-${rs} button > svg {
     fill: currentColor;
   }
   
-  #notification-banner-${rs} .button-close-${rs}:hover {
+  #notification-banner-${rs} button:hover {
     color: #d5001c;
   }
   
-  #notification-banner-${rs} .button-close-${rs}:focus {
+  #notification-banner-${rs} button:focus {
     outline: 2px solid #00d5b9;
     outline-offset: 1px;
   }

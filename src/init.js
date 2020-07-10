@@ -9,11 +9,11 @@
   }
   const ua = window.navigator.userAgent;
 
-  if (ieVersion(ua) < 18 && !isCookie('notification-banner')) {
+  if (ieVersion(ua) <= 18 && !isCookie('notification-banner')) {
     const body = document.getElementsByTagName('body')[0];
     const notificationBanner = document.createElement('script');
     notificationBanner.id = 'notification-banner-script';
-    notificationBanner.src = '../lib/notification-banner.js';
+    notificationBanner.src = 'https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/notification-banner.js';
     body.appendChild(notificationBanner)
     document.cookie = 'notification-banner=false';
   }
