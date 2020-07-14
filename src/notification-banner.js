@@ -1,6 +1,20 @@
 (() => {
   const rs = Math.random().toString(36).substr(2, 9);
-  const bannerId = `nb-${rs}`;
+  const prefix = 'pds-notification-banner';
+  const bannerId = `${prefix}-id-${rs}`;
+
+  const removeBanner = () => {
+    const banner = document.getElementById(bannerId);
+    const script = document.getElementById(`${prefix}-script`);
+    const style = document.getElementById(`${prefix}-style-${rs}`);
+    const btn = banner.getElementsByTagName('button')[0];
+    document.cookie = `${prefix}=true`;
+    btn.removeEventListener('click', removeBanner);
+    document.body.removeChild(banner);
+    document.body.removeChild(script);
+    document.head.removeChild(style);
+
+  }
 
   const locales = {
     'de': '<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> oder <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
@@ -19,7 +33,7 @@
   const lang = getHtmlLang && getHtmlLang in locales ? getHtmlLang : 'en';
 
   const html = `
-  <div id="notification-banner-${rs}">
+  <div id="${prefix}-${rs}">
     <div class="content-wrapper-${rs}">
       <div class="content-${rs}">
         <div class="icon-${rs}">
@@ -29,7 +43,7 @@
           ${locales[lang]}
         </p>
       </div>
-      <button type="button" onclick="removeBanner();">
+      <button type="button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
           <path d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"/>
         </svg>
@@ -39,7 +53,7 @@
   `;
 
   const css = `
-  #notification-banner-${rs} {
+  #${prefix}-${rs} {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -54,12 +68,12 @@
     transition: top 500ms ease 1000ms, opacity 500ms ease 1000ms;
   }
   
-  #notification-banner-${rs}.loaded-${rs} {
+  #${prefix}-${rs}.-loaded-${rs} {
     top: 100px;
     opacity: 1;
   }
   
-  #notification-banner-${rs} .content-wrapper-${rs} {
+  #${prefix}-${rs} .content-wrapper-${rs} {
     position: relative;
     width: 100%;
     max-width: 1536px;
@@ -74,17 +88,17 @@
     0 100px 80px rgba(0, 0, 0, 0.12)
   }
   
-  #notification-banner-${rs} .content-${rs} {
+  #${prefix}-${rs} .content-${rs} {
     padding: 12px 48px 12px 12px;
     display: flex;
   }
   
-  #notification-banner-${rs} .icon-${rs} {
+  #${prefix}-${rs} .icon-${rs} {
     width: 48px;
     height: 48px;
   }
   
-  #notification-banner-${rs} p {
+  #${prefix}-${rs} p {
     padding: 4px 24px 0 24px;
     max-width: 948px;
     color: #000;
@@ -95,7 +109,7 @@
     margin: 0;
   }
   
-  #notification-banner-${rs} p > a {
+  #${prefix}-${rs} p > a {
     color: #000;
     font-weight: bold;
     text-decoration: underline;
@@ -103,11 +117,11 @@
     white-space: nowrap;
   }
   
-  #notification-banner-${rs} p > a:hover {
+  #${prefix}-${rs} p > a:hover {
     color: #d5001c;
   }
   
-  #notification-banner-${rs} button {
+  #${prefix}-${rs} button {
     width: 24px;
     height: 24px;
     border: none;
@@ -122,33 +136,23 @@
     transition: color 0.24s ease;
   }
   
-  #notification-banner-${rs} button > svg {
+  #${prefix}-${rs} button > svg {
     fill: currentColor;
   }
   
-  #notification-banner-${rs} button:hover {
+  #${prefix}-${rs} button:hover {
     color: #d5001c;
   }
   
-  #notification-banner-${rs} button:focus {
+  #${prefix}-${rs} button:focus {
     outline: 2px solid #00d5b9;
     outline-offset: 1px;
   }
   `;
 
-  const removeBanner = () => {
-    const banner = document.getElementById(bannerId);
-    const script = document.getElementById('notification-banner-script');
-    const style = document.getElementById('notification-banner-style');
-    document.body.removeChild(banner);
-    document.body.removeChild(script);
-    document.head.removeChild(style);
-    document.cookie = 'notification-banner=true';
-  }
-
   const insertSlottedStyles = (css) => {
     const style = document.createElement('style');
-    style.id = 'notification-banner-style';
+    style.id = `${prefix}-style-${rs}`;
     style.appendChild(document.createTextNode(minifySlottedStyles(css)));
 
     const prependTo = document.head;
@@ -172,12 +176,17 @@
 
 
   insertSlottedStyles(css);
-  const div = document.createElement('div');
-  div.id = bannerId;
-  document.body.appendChild(div);
-  div.innerHTML = html;
-  const banner = document.getElementById(`notification-banner-${rs}`);
+  const bannerWrapper = document.createElement('div');
+  bannerWrapper.id = bannerId;
+
+  document.body.appendChild(bannerWrapper);
+  bannerWrapper.innerHTML = html;
+  const banner = document.getElementById(`${prefix}-${rs}`);
+
   setTimeout(() => {
-    banner.classList.add(`loaded-${rs}`);
+    banner.classList.add(`-loaded-${rs}`);
   }, 500);
+
+  const btn = banner.getElementsByTagName('button')[0];
+  btn.addEventListener('click', removeBanner);
 })();

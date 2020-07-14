@@ -8,6 +8,7 @@
   "scripts": {
     "start": "yarn build && http-server ./",
     "build": "./node_modules/.bin/babel src --out-dir lib",
+    "deploy": "yarn build && bash ./scripts/deploy.sh",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./lib"
   },
   "devDependencies": {
