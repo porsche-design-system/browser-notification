@@ -17,7 +17,6 @@
     notificationBanner.id = `${prefix}-script`;
     notificationBanner.src = `${path}/notification-banner.js`;
     body.appendChild(notificationBanner)
-    document.cookie = `${prefix}=false`;
   }
   else {
     return false;
