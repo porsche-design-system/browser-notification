@@ -1,6 +1,7 @@
 (() => {
   const prefix = 'pds-notification-banner';
-  const path = 'https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1';
+  const path = 'https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0';
+  // const path = '../lib/';
   const isCookie = (name) => {
     return document.cookie.split(';').some((item) => item.indexOf(`${name}=true`)>=0);
   }

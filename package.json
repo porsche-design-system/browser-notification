@@ -1,10 +1,28 @@
 {
-  "name": "porsche-notification-banner",
-  "version": "0.0.0",
+  "name": "@porsche-design-system/notification-banner",
+  "version": "1.0.0-alpha.0",
+  "scope": "@porsche-design-system",
   "private": true,
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Bernd Hacker <bernd.hacker@mhp.com>"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "description": "Notification Banner to show end of support of IE11",
   "files": [
     "lib/"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-notification-banner.git"
+  },
+  "homepage": "https://github.com/porscheui/porsche-notification-banner#readme",
+  "publishConfig": {
+    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+  },
   "scripts": {
     "start": "yarn build && http-server ./",
     "build": "./node_modules/.bin/babel src --out-dir lib",

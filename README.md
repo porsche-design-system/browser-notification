@@ -35,3 +35,5 @@ Then execute script:
 ```
 yarn deploy
 ```
+
+## Publish
