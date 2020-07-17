@@ -71,7 +71,7 @@
   }
   
   #${prefix}-${rs}.-loaded-${rs} {
-    top: 100px;
+    top: 50px;
     opacity: 1;
   }
   
@@ -81,17 +81,11 @@
     max-width: 1536px;
     background-color: #fff5e5;
     border-top: 4px solid #ff9b00;
-    box-shadow:
-    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12)
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
   }
   
   #${prefix}-${rs} .content-${rs} {
-    padding: 12px 48px 12px 12px;
+    padding: 16px 48px 16px 16px;
     display: flex;
   }
   
@@ -101,7 +95,7 @@
   }
   
   #${prefix}-${rs} p {
-    padding: 4px 24px 0 24px;
+    padding: 0 24px 0 16px;
     max-width: 948px;
     color: #000;
     font-size: 16px;

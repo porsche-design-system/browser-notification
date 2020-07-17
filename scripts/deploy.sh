@@ -7,7 +7,9 @@ PACKAGE_VERSION=$(cat ./package.json \
   | grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
-  | tr . -)
+  | sed 's/[",]//g' \
+  | tr . - \
+  | tr -d '[[:space:]]')
 
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
@@ -26,5 +28,12 @@ function purge {
   curl -sk -X PUT -H "Authorization: TOK:${CDN_API_TOKEN}" -H "Content-Type: application/json" -H "Accept: application/json" -d "{ \"MediaPath\":\"https:\/\/cdn.ui.porsche.com\/porsche-design-system\/notification-banner\/${PACKAGE_VERSION}\/*\", \"MediaType\":3}" "https://api.edgecast.com/v2/mcc/customers/B2820/edge/purge"
 }
 
+# echo "path: notification-banner/${PACKAGE_VERSION}/"
+
 upload "${SCRIPT_DIR}/../lib/*" notification-banner/${PACKAGE_VERSION}/
-purge
+
+if
+  [[ "--purge" == "${1}" ]]
+then
+  ${1:2}
+fi
