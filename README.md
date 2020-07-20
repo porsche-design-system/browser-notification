@@ -22,7 +22,7 @@ yarn build
 To deploy a new version from the generated JS files to Porsche Design System Edgecast CDN create an `.env` file with the following credentials:
 
 ```
-CDN_USER=bernd.hacker@mhp.com
+CDN_USER=porsche-ui-kit@porsche.de
 ```
 
 Then execute script:
