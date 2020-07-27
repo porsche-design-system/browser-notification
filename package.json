@@ -1,8 +1,7 @@
 {
   "name": "@porsche-design-system/browser-notification-banner",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "scope": "@porsche-design-system",
-  "private": true,
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Matthias Hägele <matthias.haegele@mhp.com>",
@@ -25,15 +24,19 @@
   },
   "scripts": {
     "start": "yarn build && http-server ./",
-    "build": "./node_modules/.bin/babel src --out-dir lib",
-    "deploy": "yarn build && bash ./scripts/deploy.sh",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./lib"
+    "build": "rm -rf ./dist && rollup -c rollup.config.js",
+    "build-cdn": "rm -rf ./build-cdn && rollup -c rollup-cdn.config.js",
+    "deploy-cdn": "yarn build-cdn && bash ./scripts/deploy.sh",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "babel-preset-minify": "^0.5.1",
-    "http-server": "^0.12.3"
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-typescript": "^5.0.2",
+    "http-server": "^0.12.3",
+    "rollup": "^2.23.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.7"
   }
 }

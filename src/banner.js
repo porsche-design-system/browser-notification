@@ -29,10 +29,17 @@
   }
 
   const getHtmlLang = document.getElementsByTagName('html')[0].getAttribute('lang').slice(0, 2);
-  const getCustomLocale = (window.PDSNB && typeof window.PDSNB.locale === 'function') && window.PDSNB.locale();
-  const getCustomTranslation = (window.PDSNB && typeof window.PDSNB.language === 'function') && window.PDSNB.language();
-  const lang = (getCustomLocale && getCustomLocale in locales) ? getCustomLocale : (getHtmlLang && getHtmlLang in locales) ? getHtmlLang : 'en';
+  // const getCustomLocale = (window.PDSNB && typeof window.PDSNB.locale === 'function') && window.PDSNB.locale();
+  // const getCustomTranslation = (window.PDSNB && typeof window.PDSNB.language === 'function') && window.PDSNB.language();
+  const lang = (getHtmlLang && getHtmlLang in locales) ? getHtmlLang : 'en';
+  // let customLocale = false;
 
+  // window.bnbSetCustomLocale = function(locale) {
+  //   if(locale in locales) {
+  //     customLocale = true;
+  //     setLocale(true, locale);
+  //   }
+  // }
 
   const html = `
   <div id="${prefix}-${rs}">
@@ -42,7 +49,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false"><path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/><path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/></svg>
         </div>
         <p>
-          ${!getCustomTranslation ? locales[lang] : getCustomTranslation}
+          ${locales[lang]}
         </p>
       </div>
       <button type="button">
