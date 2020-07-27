@@ -1,6 +1,6 @@
 (() => {
-  const prefix = 'pds-notification-banner';
-  const path = 'https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0';
+  const prefix = 'pds-browser-notification-banner';
+  const path = 'https://cdn.ui.porsche.com/porsche-design-system/browser-notification-banner/1-0-0-alpha-0';
   // const path = '../lib/';
   const isCookie = (name) => {
     return document.cookie.split(';').some((item) => item.indexOf(`${name}=true`)>=0);
@@ -16,7 +16,7 @@
     const body = document.getElementsByTagName('body')[0];
     const notificationBanner = document.createElement('script');
     notificationBanner.id = `${prefix}-script`;
-    notificationBanner.src = `${path}/notification-banner.js`;
+    notificationBanner.src = `${path}/browser-notification-banner.js`;
     body.appendChild(notificationBanner)
   }
   else {

@@ -1,6 +1,6 @@
 (() => {
   const rs = Math.random().toString(36).substr(2, 9);
-  const prefix = 'pds-notification-banner';
+  const prefix = 'pds-browser-notification-banner';
   const bannerId = `${prefix}-id-${rs}`;
 
   const removeBanner = () => {

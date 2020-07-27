@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/notification-banner",
+  "name": "@porsche-design-system/browser-notification-banner",
   "version": "1.0.0-alpha.0",
   "scope": "@porsche-design-system",
   "private": true,
@@ -17,9 +17,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-notification-banner.git"
+    "url": "git+https://github.com/porscheui/porsche-browser-notification-banner.git"
   },
-  "homepage": "https://github.com/porscheui/porsche-notification-banner#readme",
+  "homepage": "https://github.com/porscheui/porsche-browser-notification-banner#readme",
   "publishConfig": {
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },

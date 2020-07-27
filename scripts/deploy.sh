@@ -25,12 +25,12 @@ function upload {
 function purge {
   echo "task: [$(date)] \"purge\""
   echo ${API_TOKEN}
-  curl -sk -X PUT -H "Authorization: TOK:${CDN_API_TOKEN}" -H "Content-Type: application/json" -H "Accept: application/json" -d "{ \"MediaPath\":\"https:\/\/cdn.ui.porsche.com\/porsche-design-system\/notification-banner\/${PACKAGE_VERSION}\/*\", \"MediaType\":3}" "https://api.edgecast.com/v2/mcc/customers/B2820/edge/purge"
+  curl -sk -X PUT -H "Authorization: TOK:${CDN_API_TOKEN}" -H "Content-Type: application/json" -H "Accept: application/json" -d "{ \"MediaPath\":\"https:\/\/cdn.ui.porsche.com\/porsche-design-system\/browser-notification-banner\/${PACKAGE_VERSION}\/*\", \"MediaType\":3}" "https://api.edgecast.com/v2/mcc/customers/B2820/edge/purge"
 }
 
-# echo "path: notification-banner/${PACKAGE_VERSION}/"
+# echo "path: browser-notification-banner/${PACKAGE_VERSION}/"
 
-upload "${SCRIPT_DIR}/../lib/*" notification-banner/${PACKAGE_VERSION}/
+upload "${SCRIPT_DIR}/../lib/*" browser-notification-banner/${PACKAGE_VERSION}/
 
 if
   [[ "--purge" == "${1}" ]]
