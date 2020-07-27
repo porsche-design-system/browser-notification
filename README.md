@@ -1,4 +1,4 @@
-# Porsche - Notification Banner
+# Porsche - Browser Notification Banner
 
 ## Introduction
 Stand-alone self invoking JS snippet to show a Notification Banner if IE11 is detected. 
