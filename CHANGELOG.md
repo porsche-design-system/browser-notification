@@ -8,7 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [1.0.0-alpha.0] - XXXX-XX-XX
+### [1.0.0-alpha.3] - 2020-07-28
+- Add custom locales and translations
+
+### [1.0.0-alpha.2] - 2020-07-27
+- Fix publish task
+
+### [1.0.0-alpha.1] - 2020-07-27
 
 #### Added
 - Initial release

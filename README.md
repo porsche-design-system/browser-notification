@@ -4,6 +4,7 @@
 Stand-alone self invoking JS snippet to show a Notification Banner if IE11 is detected. 
 
 ## Start
+Change path to static `index.js` file in `public/index.html`
 Start local dev server to test application `http://192.168.178.59:61423/public/`
 
 ```
@@ -11,14 +12,20 @@ yarn start
 ```
 
 ## Build
-Transpile js to es5 to support IE11.
+Transpile `src/index.ts` to es5 to support IE11.
 
 ```
 yarn build
 ```
 
-## Deploy
+## Build assets for CDN
+Before publish, source files has to be transpiled to CDN versions into `build-cdn` folder.
 
+```
+yarn build-cdn
+```
+
+## Deploy
 To deploy a new version from the generated JS files to Porsche Design System Edgecast CDN create an `.env` file with the following credentials:
 
 ```
@@ -30,22 +37,10 @@ Then execute script:
 yarn deploy
 ```
 
-## Deploy and purge ()
-
-If you want to deploy and purge an existing version, you need an [Edgecast CDN API token](https://my.edgecast.com) from the technical user (porsche-ui-kit@porsche.de) and check that the API access is set to 
-- [x] GET
-- [x] PUT
-- [x] POST
-
-Then add the CDN API token to the `.env` file in the root directory:
-
-```
-CDN_API_TOKEN=XXXXXXXXXX
-```
+## Publish
+To publish a new package to Artifactory, add _npm registry token_ in following format `PORSCHE_NPM_REGISTRY_TOKEN=YOUR_TOKEN_GOES_HERE` to `.env` file.
 
 Then execute script:
 ```
-yarn deploy --purge
+yarn publish
 ```
-
-## Publish
