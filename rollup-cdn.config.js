@@ -29,7 +29,7 @@ export default [
     ]
   },
   {
-    input: 'src/banner.js',
+    input: 'src/banner.ts',
     output: {
       esModule: false,
       file: `./build-cdn/banner.min.${pkg.version}.js`,
@@ -38,6 +38,7 @@ export default [
       exports: 'named'
     },
     plugins: [
+      ...commonPlugins(),
       terser()
     ]
   }

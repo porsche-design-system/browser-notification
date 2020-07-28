@@ -1,6 +1,6 @@
 (() => {
   const prefix = 'pds-browser-notification-banner';
-  const isCookie = (name) => {
+  const isCookie = (name: string) => {
     return document.cookie.split(';').some((item) => item.indexOf(`${name}=true`)>=0);
   }
 
@@ -13,17 +13,13 @@
 
   const removeBanner = () => {
     const banner = document.getElementById(bannerId);
-    const script = document.getElementById(`${prefix}-script`);
-    const style = document.getElementById(`${prefix}-style-${rs}`);
     const btn = banner.getElementsByTagName('button')[0];
     document.cookie = `${prefix}=true`;
     btn.removeEventListener('click', removeBanner);
     document.body.removeChild(banner);
-    document.body.removeChild(script);
-    document.head.removeChild(style);
   }
 
-  const locales = {
+  const locales:{ [key: string]: string; } = {
     'de': '<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> oder <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
     'ru': '<strong>Обратите внимание, что используемый Вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> или <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
     'fr': '<strong>Veuillez noter que le navigateur utilisé n\'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de  <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> ou <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
@@ -152,7 +148,7 @@
   }
   `;
 
-  const insertSlottedStyles = (css) => {
+  const insertSlottedStyles = (css: string) => {
     const style = document.createElement('style');
     style.id = `${prefix}-style-${rs}`;
     style.appendChild(document.createTextNode(minifySlottedStyles(css)));
@@ -169,7 +165,7 @@
     }
   };
 
-  const minifySlottedStyles = (css) =>
+  const minifySlottedStyles = (css: string) =>
       css
           .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
           .replace(/(:|;)\s/g, '$1') // remove space after colon and semi colon

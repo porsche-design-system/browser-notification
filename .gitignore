@@ -43,3 +43,4 @@ Thumbs.db
 # build directories
 dist
 build-cdn
+index.ts
