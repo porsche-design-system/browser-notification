@@ -1,6 +1,14 @@
 (() => {
-  const rs = Math.random().toString(36).substr(2, 9);
   const prefix = 'pds-browser-notification-banner';
+  const isCookie = (name) => {
+    return document.cookie.split(';').some((item) => item.indexOf(`${name}=true`)>=0);
+  }
+
+  if (isCookie(`${prefix}`)) {
+    return false;
+  }
+
+  const rs = Math.random().toString(36).substr(2, 9);
   const bannerId = `${prefix}-id-${rs}`;
 
   const removeBanner = () => {
