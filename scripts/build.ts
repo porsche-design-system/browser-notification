@@ -11,10 +11,10 @@ const createManifest = async (cdn: string, files: string[]): Promise<void> => {
 
   for (const file of files) {
     const jsRawPath = path.normalize(file);
-    const jsRawName = path.basename(jsRawPath, '.js');
-    const jsShortName = jsRawName.split('.')[0];
+    const jsFileName = path.basename(jsRawPath);
+    const jsShortName = jsFileName.split('.')[0];
 
-    manifest[jsShortName] = jsRawName;
+    manifest[jsShortName] = jsFileName;
   }
 
   fs.writeFileSync(
