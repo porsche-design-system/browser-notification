@@ -14,11 +14,10 @@ const commonPlugins = () => [
 
 export default [
   {
-    input: 'src/index.ts',
+    input: 'src/init.ts',
     output: {
-      esModule: false,
-      dir: 'dist',
-      format: 'umd',
+      dir: 'dist/',
+      format: 'cjs',
       name: pkg.name,
       exports: 'named'
     },

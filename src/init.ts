@@ -1,5 +1,5 @@
 import {version} from '../package.json';
-module.exports = (() => {
+(() => {
   const prefix = 'pds-browser-notification-banner';
   const path = 'https://cdn.ui.porsche.com/porsche-design-system/browser-notification-banner';
   // const path = '../build-cdn/';
