@@ -34,8 +34,9 @@
     'pl': '<strong>Należy pamiętać, że używana przeglądarka nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> lub <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.'
   }
 
-  const getHtmlLang = document.getElementsByTagName('html')[0].getAttribute('lang').slice(0, 2);
-  const lang = (getHtmlLang && getHtmlLang in locales) ? getHtmlLang : 'en';
+  const getHtmlLang = document.getElementsByTagName('html')[0].getAttribute('lang');
+  const getLocale = getHtmlLang && getHtmlLang.slice(0, 2);
+  const lang = (getLocale && getLocale in locales) ? getLocale : 'en';
 
   const html = `
   <div id="${prefix}-${rs}">
