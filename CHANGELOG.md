@@ -8,8 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.0.0-beta.1] - 2020-08-25
+
 #### Changed
 - Make banner sticky
+
+### [1.0.0-alpha.7] - 2020-07-30
+
+#### Fixed
+- Language detection
+
+### [1.0.0-alpha.6] - 2020-07-30
+
+#### Changed
+- Add module export
 
 ### [1.0.0-alpha.5] - 2020-07-28
 
