@@ -60,7 +60,7 @@
 
   const css = `
   #${prefix}-${rs} {
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     padding-left: 7vw;

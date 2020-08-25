@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Make banner sticky
+
 ### [1.0.0-alpha.5] - 2020-07-28
 
 #### Changed
