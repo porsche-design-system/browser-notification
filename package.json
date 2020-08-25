@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/browser-notification-banner",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-beta.1",
   "scope": "@porsche-design-system",
   "main": "dist/umd/index.js",
   "module": "dist/module/index.js",
