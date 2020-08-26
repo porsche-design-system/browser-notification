@@ -14,7 +14,7 @@ import {version} from '../package.json';
     const body = document.getElementsByTagName('body')[0];
     const notificationBanner = document.createElement('script');
     notificationBanner.id = `${prefix}-script`;
-    notificationBanner.src = `${path}/banner.min.${version}.js`;
+    notificationBanner.src = `${path}/notification-banner.min.${version}.js`;
     body.appendChild(notificationBanner)
   }
   else {

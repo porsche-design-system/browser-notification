@@ -29,10 +29,10 @@ export default [
     ]
   },
   {
-    input: 'src/banner.ts',
+    input: 'src/notification-banner.ts',
     output: {
       esModule: false,
-      file: `./build-cdn/banner.min.${pkg.version}.js`,
+      file: `./build-cdn/notification-banner.min.${pkg.version}.js`,
       format: 'umd',
       name: pkg.name,
       exports: 'named'

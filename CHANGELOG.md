@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.0.0-beta.2] - 2020-08-26
+
+#### Changed
+- Renamed filename and manifest for banner script 
+
 ### [1.0.0-beta.1] - 2020-08-25
 
 #### Changed

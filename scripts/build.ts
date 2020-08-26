@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import globby from 'globby';
+import { camelCase } from 'change-case';
 
 type Manifest = {
   [name: string]: string;
@@ -14,7 +15,7 @@ const createManifest = async (cdn: string, files: string[]): Promise<void> => {
     const jsFileName = path.basename(jsRawPath);
     const jsShortName = jsFileName.split('.')[0];
 
-    manifest[jsShortName] = jsFileName;
+    manifest[camelCase(jsShortName)] = jsFileName;
   }
 
   fs.writeFileSync(
