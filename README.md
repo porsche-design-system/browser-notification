@@ -12,17 +12,10 @@ yarn start
 ```
 
 ## Build
-Transpile `src/index.ts` to es5 to support IE11.
+Transpile `src/index.ts` to es5 to support IE11 and build CDN assets.
 
 ```
 yarn build
-```
-
-## Build assets for CDN
-Before publish, source files has to be transpiled to CDN versions into `build-cdn` folder.
-
-```
-yarn build-cdn
 ```
 
 ## Deploy
@@ -39,6 +32,9 @@ yarn deploy
 
 ## Publish
 To publish a new package to Artifactory, add _npm registry token_ in following format `PORSCHE_NPM_REGISTRY_TOKEN=YOUR_TOKEN_GOES_HERE` to `.env` file.
+Also add CDN credentials like SSH key, technical user mail address and password in the following format: 
+`CDN_USER=porsche-ui-kit@porsche.de`
+`CDN_PASS=CDN_PASSWORD`
 
 Then execute script:
 ```

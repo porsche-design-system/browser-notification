@@ -26,5 +26,34 @@ export default [
       json(),
       terser()
     ]
+  },
+  {
+    input: 'src/init.ts',
+    output: {
+      esModule: false,
+      file: `./build-cdn/init.min.${pkg.version}.js`,
+      format: 'umd',
+      name: pkg.name,
+      exports: 'named'
+    },
+    plugins: [
+      ...commonPlugins(),
+      json(),
+      terser()
+    ]
+  },
+  {
+    input: 'src/notification-banner.ts',
+    output: {
+      esModule: false,
+      file: `./build-cdn/notification-banner.min.${pkg.version}.js`,
+      format: 'umd',
+      name: pkg.name,
+      exports: 'named'
+    },
+    plugins: [
+      ...commonPlugins(),
+      terser()
+    ]
   }
 ];

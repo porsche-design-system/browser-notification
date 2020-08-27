@@ -26,14 +26,13 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "start": "yarn build:cdn && http-server ./",
-    "build": "yarn build:js && yarn build:cdn && yarn build:manifest",
-    "build:js": "rm -rf ./dist && rollup -c rollup.config.js",
-    "build:cdn": "rm -rf ./build-cdn && rollup -c rollup-cdn.config.js",
+    "start": "yarn build && http-server ./",
+    "build": "yarn build:js && yarn build:manifest",
+    "build:js": "rm -rf ./dist && rm -rf ./build-cdn && rollup -c rollup.config.js",
     "build:manifest": "ts-node --project './tsconfig.json' './scripts/build.ts' && yarn build:manifest:module && yarn build:manifest:umd",
     "build:manifest:module": "tsc --build ./tsconfig.lib.module.json",
     "build:manifest:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "deploy:cdn": "yarn build:cdn && bash ./scripts/deploy.sh",
+    "deploy:cdn": "yarn build:js && bash ./scripts/deploy.sh",
     "prepublish": "yarn build && yarn deploy:cdn",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./build-cdn"
   },
