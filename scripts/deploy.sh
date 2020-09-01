@@ -21,4 +21,4 @@ function upload {
   rsync -av -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
 }
 
-upload "${SCRIPT_DIR}/../build-cdn/*.js" browser-notification-banner/
+upload "${SCRIPT_DIR}/../cdn/*.js" browser-notification-banner/

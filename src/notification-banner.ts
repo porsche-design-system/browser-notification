@@ -63,20 +63,24 @@
 
   const applyLogic = (): void => {
     const banner = document.getElementById(ID);
-    const button = banner.getElementsByTagName('button')[0];
-    button.addEventListener('click', removeBanner);
+    if (banner) {
+      const button = banner.getElementsByTagName('button')[0];
+      button.addEventListener('click', removeBanner);
 
-    setTimeout(() => {
-      banner.classList.add(`${ID}--loaded`);
-    }, 500);
+      setTimeout(() => {
+        banner.classList.add(`${ID}--loaded`);
+      }, 500);
+    }
   }
 
   const removeBanner = (): void => {
     const banner = document.getElementById(ID);
-    const button = banner.getElementsByTagName('button')[0];
-    preventBannerFromBeingShown();
-    button.removeEventListener('click', removeBanner);
-    document.body.removeChild(banner);
+    if (banner) {
+      const button = banner.getElementsByTagName('button')[0];
+      preventBannerFromBeingShown();
+      button.removeEventListener('click', removeBanner);
+      document.body.removeChild(banner);
+    }
   }
 
   const html = `

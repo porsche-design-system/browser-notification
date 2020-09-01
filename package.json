@@ -2,9 +2,6 @@
   "name": "@porsche-design-system/browser-notification-banner",
   "version": "1.0.0-beta.2",
   "scope": "@porsche-design-system",
-  "main": "dist/umd/index.js",
-  "module": "dist/module/index.js",
-  "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Matthias Hägele <matthias.haegele@mhp.com>",
@@ -14,39 +11,38 @@
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Browser Notification Banner to show end of support of IE11",
-  "files": [
-    "dist/"
+  "keywords": [
+    "Porsche",
+    "Notification",
+    "Banner",
+    "IE11",
+    "Edge"
   ],
+  "homepage": "https://github.com/porscheui/porsche-browser-notification-banner#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/porscheui/porsche-browser-notification-banner.git"
   },
-  "homepage": "https://github.com/porscheui/porsche-browser-notification-banner#readme",
-  "publishConfig": {
-    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
     "start": "yarn build && http-server ./",
-    "build": "yarn build:js && yarn build:manifest",
-    "build:js": "rm -rf ./dist && rm -rf ./build-cdn && rollup -c rollup.config.js",
-    "build:manifest": "ts-node --project './tsconfig.json' './scripts/build.ts' && yarn build:manifest:module && yarn build:manifest:umd",
-    "build:manifest:module": "tsc --build ./tsconfig.lib.module.json",
-    "build:manifest:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "deploy:cdn": "yarn build:js && bash ./scripts/deploy.sh",
-    "prepublish": "yarn build && yarn deploy:cdn",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./build-cdn"
+    "build": "rm -rf ./dist && rm -rf ./cdn && rollup -c rollup.config.js",
+    "deploy:cdn": "yarn build && bash ./scripts/deploy.sh",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./cdn"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
-    "change-case": "^4.1.1",
-    "globby": "^11.0.1",
     "http-server": "^0.12.3",
     "rollup": "^2.23.0",
-    "rollup-plugin-terser": "^6.1.0",
-    "ts-node": "^8.10.2",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.7"
-  }
+    "rollup-plugin-terser": "^6.1.0"
+  },
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts"
 }

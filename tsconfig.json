@@ -1,22 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "ES5",
+    "module": "ES2015",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": false,
-    "strictNullChecks": false
-  },
-  "include": ["src/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+    "strict": true
+  }
 }
