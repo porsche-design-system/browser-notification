@@ -1,25 +1,7 @@
-(() => {
-  const prefix = 'pds-browser-notification-banner';
-  const isCookie = (name: string) => {
-    return document.cookie.split(';').some((item) => item.indexOf(`${name}=true`)>=0);
-  }
+((): void => {
+  const ID = 'pds-browser-notification-banner';
 
-  if (isCookie(`${prefix}`)) {
-    return false;
-  }
-
-  const rs = Math.random().toString(36).substr(2, 9);
-  const bannerId = `${prefix}-id-${rs}`;
-
-  const removeBanner = () => {
-    const banner = document.getElementById(bannerId);
-    const btn = banner.getElementsByTagName('button')[0];
-    document.cookie = `${prefix}=true`;
-    btn.removeEventListener('click', removeBanner);
-    document.body.removeChild(banner);
-  }
-
-  const locales:{ [key: string]: string; } = {
+  const locales: { [lang: string]: string; } = {
     'de': '<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> oder <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
     'ru': '<strong>Обратите внимание, что используемый Вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> или <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
     'fr': '<strong>Veuillez noter que le navigateur utilisé n\'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de  <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> ou <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
@@ -34,37 +16,93 @@
     'pl': '<strong>Należy pamiętać, że używana przeglądarka nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> lub <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.'
   }
 
-  const getHtmlLang = document.getElementsByTagName('html')[0].getAttribute('lang');
-  const getLocale = getHtmlLang && getHtmlLang.slice(0, 2);
-  const lang = (getLocale && getLocale in locales) ? getLocale : 'en';
+  const preventBannerFromBeingShown = (): void => {
+    sessionStorage.setItem(ID, 'true');
+  }
+
+  const shallBannerBeShown = (): boolean => {
+    return sessionStorage.getItem(ID) !== 'true';
+  }
+
+  const getLang = (): string => {
+    const htmlLang = document.getElementsByTagName('html')[0].getAttribute('lang');
+    const locale = htmlLang && htmlLang.slice(0, 2);
+    return (locale && locale in locales) ? locale : 'en';
+  }
+
+  const minifyStyles = (css: string): string => {
+    return css
+      .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
+      .replace(/(:|;)\s/g, '$1') // remove space after colon and semi colon
+      .replace(/[\s;]({|})\s?/g, '$1'); // remove semi colon and space before and after opening and closing curly bracket
+  }
+
+  const addStyles = (css: string): void => {
+    const head = document.head;
+    const charsetTag = head.querySelector('meta[charset]');
+    const style = document.createElement('style');
+
+    style.appendChild(document.createTextNode(minifyStyles(css)));
+
+    if (charsetTag !== null) {
+      head.insertBefore(style, charsetTag.nextSibling);
+    } else if (head.childNodes.length > 0) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  };
+
+  const addMarkup = (html: string): void => {
+    const body = document.body;
+    const markup = document.createElement('div');
+    markup.id = ID;
+    markup.innerHTML = html;
+    body.appendChild(markup);
+  }
+
+  const applyLogic = (): void => {
+    const banner = document.getElementById(ID);
+    const button = banner.getElementsByTagName('button')[0];
+    button.addEventListener('click', removeBanner);
+
+    setTimeout(() => {
+      banner.classList.add(`${ID}--loaded`);
+    }, 500);
+  }
+
+  const removeBanner = (): void => {
+    const banner = document.getElementById(ID);
+    const button = banner.getElementsByTagName('button')[0];
+    preventBannerFromBeingShown();
+    button.removeEventListener('click', removeBanner);
+    document.body.removeChild(banner);
+  }
 
   const html = `
-  <div id="${prefix}-${rs}">
-    <div class="content-wrapper-${rs}">
-      <div class="content-${rs}">
-        <div class="icon-${rs}">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false"><path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/><path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/></svg>
-        </div>
-        <p>
-          ${locales[lang]}
-        </p>
-      </div>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
+        <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
+        <path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/>
+      </svg>
+      <p>
+        ${locales[getLang()]}
+      </p>
       <button type="button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
           <path d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"/>
         </svg>
       </button>
     </div>
-  </div>
   `;
 
   const css = `
-  #${prefix}-${rs} {
+  #${ID} {
     position: fixed;
     display: flex;
     justify-content: center;
-    padding-left: 7vw;
-    padding-right: 7vw;
+    margin: 0;
+    padding: 0 7vw;
     top: -100%;
     left: 0;
     right: 0;
@@ -74,120 +112,90 @@
     transition: top 500ms ease 1000ms, opacity 500ms ease 1000ms;
   }
   
-  #${prefix}-${rs}.-loaded-${rs} {
-    top: 50px;
+  #${ID}.${ID}--loaded {
+    top: 3rem;
     opacity: 1;
   }
   
-  #${prefix}-${rs} .content-wrapper-${rs} {
+  #${ID} > div {
     position: relative;
     width: 100%;
-    max-width: 1536px;
+    max-width: 96rem;
+    margin: 0;
+    padding: 1rem 3rem 1rem 1rem;
+    display: flex;
     background-color: #fff5e5;
     border-top: 4px solid #ff9b00;
-    box-shadow: 0px 0px 35px 0px #C9CACB;
+    box-shadow: 0 0 2.1875rem 0 #C9CACB;
   }
   
-  #${prefix}-${rs} .content-${rs} {
-    padding: 16px 48px 16px 16px;
-    display: flex;
+  #${ID} > div > svg {
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
   }
   
-  #${prefix}-${rs} .icon-${rs} {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-  }
-  
-  #${prefix}-${rs} p {
-    padding: 0 24px 0 16px;
-    max-width: 948px;
-    color: #000;
-    font-size: 16px;
+  #${ID} > div > p {
+    margin: 0;
+    padding: 0 1.5rem 0 1rem;
+    max-width: 59.25rem;
+    font-size: 1rem;
     font-family: PorscheNext-Regular, 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
-    line-height: 24px;
-    margin: 0;
+    line-height: 1.5;
+    color: #000;
   }
   
-  #${prefix}-${rs} p > a {
+  #${ID} > div > p > a {
+    margin: 0;
+    padding: 0;
     color: #000;
     font-weight: bold;
     text-decoration: underline;
-    transition: color 0.24s ease;
     white-space: nowrap;
+    transition: color 0.24s ease;
   }
   
-  #${prefix}-${rs} p > a:hover {
+  #${ID} > div > p > a:hover {
     color: #d5001c;
   }
   
-  #${prefix}-${rs} button {
-    width: 24px;
-    height: 24px;
+  #${ID} > div > button {
+    width: 1.5rem;
+    height: 1.5rem;
     border: none;
     border-radius: 0;
     margin: 0;
     padding: 0;
     background-color: transparent;
     position: absolute;
-    right: 16px;
-    top: 16px;
+    right: 1rem;
+    top: 1rem;
     cursor: pointer;
     transition: color 0.24s ease;
   }
   
-  #${prefix}-${rs} button > svg {
-    fill: currentColor;
-  }
-  
-  #${prefix}-${rs} button:hover {
+  #${ID} > div > button:hover {
     color: #d5001c;
   }
   
-  #${prefix}-${rs} button:focus {
+  #${ID} > div > button:focus {
     outline: 2px solid #00d5b9;
     outline-offset: 1px;
   }
+  
+  #${ID} > div > button > svg {
+    fill: currentColor;
+    margin: 0;
+    padding: 0;
+  }
   `;
 
-  const insertSlottedStyles = (css: string) => {
-    const style = document.createElement('style');
-    style.id = `${prefix}-style-${rs}`;
-    style.appendChild(document.createTextNode(minifySlottedStyles(css)));
-
-    const prependTo = document.head;
-    const charsetTag = prependTo.querySelector('meta[charset]');
-
-    if (charsetTag !== null) {
-      prependTo.insertBefore(style, charsetTag.nextSibling);
-    } else if (prependTo.childNodes.length > 0) {
-      prependTo.insertBefore(style, prependTo.firstChild);
-    } else {
-      prependTo.appendChild(style);
-    }
-  };
-
-  const minifySlottedStyles = (css: string) =>
-      css
-          .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
-          .replace(/(:|;)\s/g, '$1') // remove space after colon and semi colon
-          .replace(/[\s;]({|})\s?/g, '$1'); // remove semi colon and space before and after opening and closing curly bracket
-
-
-
-  insertSlottedStyles(css);
-  const bannerWrapper = document.createElement('div');
-  bannerWrapper.id = bannerId;
-
-  document.body.appendChild(bannerWrapper);
-  bannerWrapper.innerHTML = html;
-  const banner = document.getElementById(`${prefix}-${rs}`);
-
-  setTimeout(() => {
-    banner.classList.add(`-loaded-${rs}`);
-  }, 500);
-
-  const btn = banner.getElementsByTagName('button')[0];
-  btn.addEventListener('click', removeBanner);
+  if (shallBannerBeShown()) {
+    addStyles(css);
+    addMarkup(html);
+    applyLogic();
+  }
 })();
