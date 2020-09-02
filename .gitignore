@@ -43,3 +43,4 @@ Thumbs.db
 # Build directories
 /dist
 /cdn
+/www

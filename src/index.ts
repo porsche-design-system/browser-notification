@@ -7,5 +7,5 @@ export const init = (options?: Options): string => {
   if (options?.withoutTags) {
     return url;
   }
-  return `<script src="${url}"></script>`;
+  return `<script defer src="${url}"></script>`;
 }

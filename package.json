@@ -4,9 +4,9 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
-    "Matthias Hägele <matthias.haegele@mhp.com>",
     "Oliver Hook <oliver.hook@mhp.com>",
     "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Matthias Hägele <matthias.haegele@mhp.com>",
     "Bernd Hacker <bernd.hacker@mhp.com>"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
@@ -27,12 +27,11 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "start": "yarn build && http-server ./",
-    "build": "rm -rf ./dist && rm -rf ./cdn && rollup -c rollup.config.js",
-    "deploy:cdn": "yarn build && bash ./scripts/deploy.sh",
+    "start": "yarn build && http-server ./www -p 4201",
+    "build": "yarn clean:build && rollup -c rollup.config.js && mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./cdn"
+    "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./www"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
