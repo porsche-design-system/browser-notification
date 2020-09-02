@@ -6,7 +6,7 @@ on:
       - release/*
 name: 'Porsche Browser Notification Banner'
 jobs:
-  components:
+  package:
     name: 'Package'
     runs-on: ubuntu-latest
     steps:
@@ -31,14 +31,38 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-      - name: 'Store NPM Artifacts'
-        uses: actions/upload-artifact@v2
-        with:
-          name: npm-artifacts
-          path: ./dist
       - name: 'Store CDN Artifacts'
         uses: actions/upload-artifact@v2
         with:
           name: cdn-artifacts
           path: ./cdn
-
+      - name: 'Store NPM Artifacts'
+        uses: actions/upload-artifact@v2
+        with:
+          name: npm-artifacts
+          path: ./dist
+  cdn-deployment:
+    name: 'CDN Deployment'
+    needs: [ package ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Restore CDN Artifacts'
+        uses: actions/download-artifact@v2
+        with:
+          name: cdn-artifacts
+          path: ./cdn
+      - name: 'Deploy'
+        uses: ./.github/actions/docker-run
+        env:
+          CDN_USER: ${{ secrets.CDN_USER }}
+          CDN_SSH_KEY: ${{ secrets.CDN_SSH_KEY }}
+        with:
+          entrypoint: run-deploy-cdn

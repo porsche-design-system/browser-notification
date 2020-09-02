@@ -2,8 +2,8 @@ import {version} from '../package.json';
 
 ((): void => {
   // TODO: add staging concept
-  const cdnPath = 'https://cdn.ui.porsche.com/porsche-design-system/browser-notification-banner';
-  // const cdnPath = '../cdn/';
+  const cdnPath = 'https://cdn.ui.porsche.com/browser-notification-banner';
+  // const cdnPath = './cdn';
 
   const getMSBrowserVersion = (): number | undefined => {
     const ua = window.navigator.userAgent || navigator.userAgent;
