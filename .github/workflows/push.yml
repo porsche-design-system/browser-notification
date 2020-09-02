@@ -23,8 +23,6 @@ jobs:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker Pull'
-        run: docker.pkg.github.com/porscheui/porsche-browser-notification-banner/porsche-browser-notification-banner:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         with:
