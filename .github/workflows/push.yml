@@ -59,10 +59,36 @@ jobs:
         with:
           name: cdn-artifacts
           path: ./cdn
-      - name: 'Deploy'
+      - name: 'Deploy to CDN'
         uses: ./.github/actions/docker-run
         env:
           CDN_USER: ${{ secrets.CDN_USER }}
           CDN_SSH_KEY: ${{ secrets.CDN_SSH_KEY }}
         with:
           entrypoint: run-deploy-cdn
+  npm-release:
+    name: 'NPM Release'
+    needs: [ cdn-deployment ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Restore NPM Artifacts'
+        uses: actions/download-artifact@v2
+        with:
+          name: npm-artifacts
+          path: ./dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          NPM_REGISTRY_TOKEN: ${{ secrets.NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: dist

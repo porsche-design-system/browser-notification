@@ -36,6 +36,6 @@ const savePackageJson = () => {
 }
 
 copyFiles(['README.md', 'CHANGELOG.md', 'LICENSE']);
-removePropsFromPackageJson(['scripts', 'devDependencies']);
+removePropsFromPackageJson(['private', 'scripts', 'devDependencies']);
 addPropsToPackageJson({main: 'index.js', module: 'esm/index.js', types: 'types/index.d.ts'});
 savePackageJson();

@@ -52,29 +52,5 @@ This should output the dependencies you might want to update. Select the npm dep
 As final check start the demo application locally and have a look at it.
 1. Run `./docker.sh run-start`
 
-==========================
+---
 
-
-
-## Deploy
-To deploy a new version from the generated JS files to Porsche Design System Edgecast CDN create an `.env` file with the following credentials:
-
-```
-CDN_USER=porsche-ui-kit@porsche.de
-```
-
-Then execute script:
-```
-yarn deploy
-```
-
-## Publish
-To publish a new package to Artifactory, add _npm registry token_ in following format `PORSCHE_NPM_REGISTRY_TOKEN=YOUR_TOKEN_GOES_HERE` to `.env` file.
-Also add CDN credentials like SSH key, technical user mail address and password in the following format: 
-`CDN_USER=porsche-ui-kit@porsche.de`
-`CDN_PASS=CDN_PASSWORD`
-
-Then execute script:
-```
-yarn publish
-```

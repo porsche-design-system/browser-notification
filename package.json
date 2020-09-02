@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/browser-notification-banner",
   "version": "1.0.0-beta.2",
   "scope": "@porsche-design-system",
+  "private": true,
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Oliver Hook <oliver.hook@mhp.com>",
