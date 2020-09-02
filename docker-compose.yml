@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  porsche-browser-notification-banner:
+    image: docker.pkg.github.com/porscheui/porsche-browser-notification-banner/porsche-browser-notification-banner:12.18.3-stretch-slim
+    working_dir: /opt/porsche-browser-notification-banner-repository
+    user: "${RUN_UID}:${RUN_GID}"
+    ports:
+      - "4201:4201"
+    environment:
+      - HOME=/home/porsche-browser-notification-banner
+    volumes:
+      - ./:/opt/porsche-browser-notification-banner-repository:cached
+      - home:/home/porsche-browser-notification-banner
+      - node-modules:/opt/porsche-browser-notification-banner-repository/node_modules
+  change-volume-owner:
+    image: docker.pkg.github.com/porscheui/porsche-browser-notification-banner/porsche-browser-notification-banner:12.18.3-stretch-slim
+    volumes:
+      - home:/opt/porsche-browser-notification-banner-volumes/home
+      - node-modules:/opt/porsche-browser-notification-banner-volumes/node_modules
+    command: |
+      sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-browser-notification-banner-volumes/*"
+volumes:
+  home:
+  node-modules:
