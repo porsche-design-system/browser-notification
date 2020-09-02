@@ -59,11 +59,11 @@ GIT_TAG_NAME="v${PACKAGE_VERSION}"
 if ! is_version_published; then
   if publish; then
     add_git_tag
-    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
+    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published. 🎉"
   else
-    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed 😢"
+    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed. 😢"
     exit 1
   fi
 else
-  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published 🤷‍♂️"
+  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published. 🤷‍♂️"
 fi

@@ -18,9 +18,10 @@ function upload {
   dir=$(echo "${1}" | sed "s|\(.*\)/.*|\1|")
   if [ -d ${dir} ]; then
     rsync -av --stats --ignore-existing -e "ssh -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/browser-notification-banner"
-    echo "matching files in directory '${dir}' have been uploaded to cdn ✅"
+    echo "Matching files in directory '${dir}' have been uploaded to CDN. ✅"
   else
-    echo "directory '${dir}' does not exist, skipping upload ❌️️"
+    echo "Directory '${dir}' does not exist, skipping upload. ❌️️"
+    exit 1
   fi
 }
 
