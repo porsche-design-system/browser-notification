@@ -1,0 +1,36 @@
+on:
+  push:
+    branches:
+      - master
+      - issue/*
+      - release/*
+name: 'Porsche Browser Notification Banner'
+jobs:
+  components:
+    name: 'Package'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker.pkg.github.com/porscheui/porsche-browser-notification-banner/porsche-browser-notification-banner:12.18.3-stretch-slim
+      - name: 'Install'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+

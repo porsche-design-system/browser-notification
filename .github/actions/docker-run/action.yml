@@ -1,0 +1,4 @@
+name: Docker Run
+runs:
+  using: docker
+  image: docker.pkg.github.com/porscheui/porsche-browser-notification-banner/porsche-browser-notification-banner:12.18.3-stretch-slim
