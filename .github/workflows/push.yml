@@ -31,4 +31,14 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+      - name: 'Store NPM Artifacts'
+        uses: actions/upload-artifact@v2
+        with:
+          name: npm-artifacts
+          path: ./dist
+      - name: 'Store CDN Artifacts'
+        uses: actions/upload-artifact@v2
+        with:
+          name: cdn-artifacts
+          path: ./cdn
 
