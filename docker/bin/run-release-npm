@@ -54,16 +54,16 @@ PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
 PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
-GIT_TAG_NAME="v${PACKAGE_VERSION}"
-
-if ! is_version_published; then
-  if publish; then
-    add_git_tag
-    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published. 🎉"
-  else
-    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed. 😢"
-    exit 1
-  fi
-else
-  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published. 🤷‍♂️"
-fi
+GIT_TAG_NAME="v${PACKAGE_VERSION}-test"
+add_git_tag
+#if ! is_version_published; then
+#  if publish; then
+#    add_git_tag
+#    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published. 🎉"
+#  else
+#    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed. 😢"
+#    exit 1
+#  fi
+#else
+#  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published. 🤷‍♂️"
+#fi
