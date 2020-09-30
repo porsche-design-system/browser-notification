@@ -1,4 +1,4 @@
-import {version} from '../package.json';
+import { version } from '../package.json';
 
 ((): void => {
   // TODO: add staging concept
@@ -12,7 +12,7 @@ import {version} from '../package.json';
       return parseInt(match[2]);
     }
     return undefined;
-  }
+  };
 
   const msBrowserVersion = getMSBrowserVersion();
   if (msBrowserVersion && msBrowserVersion <= 18) {

@@ -1,6 +1,7 @@
 ((): void => {
   const ID = 'pds-browser-notification-banner';
 
+  // prettier-ignore
   const locales: { [lang: string]: string; } = {
     'de': '<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> oder <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
     'ru': '<strong>Обратите внимание, что используемый Вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> или <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.',
@@ -18,24 +19,24 @@
 
   const preventBannerFromBeingShown = (): void => {
     sessionStorage.setItem(ID, 'true');
-  }
+  };
 
   const shallBannerBeShown = (): boolean => {
     return sessionStorage.getItem(ID) !== 'true';
-  }
+  };
 
   const getLang = (): string => {
     const htmlLang = document.getElementsByTagName('html')[0].getAttribute('lang');
     const locale = htmlLang && htmlLang.slice(0, 2);
-    return (locale && locale in locales) ? locale : 'en';
-  }
+    return locale && locale in locales ? locale : 'en';
+  };
 
   const minifyStyles = (css: string): string => {
     return css
       .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
       .replace(/(:|;)\s/g, '$1') // remove space after colon and semi colon
       .replace(/[\s;]({|})\s?/g, '$1'); // remove semi colon and space before and after opening and closing curly bracket
-  }
+  };
 
   const addStyles = (css: string): void => {
     const head = document.head;
@@ -59,7 +60,7 @@
     markup.id = ID;
     markup.innerHTML = html;
     body.appendChild(markup);
-  }
+  };
 
   const applyLogic = (): void => {
     const banner = document.getElementById(ID);
@@ -71,7 +72,7 @@
         banner.classList.add(`${ID}--loaded`);
       }, 500);
     }
-  }
+  };
 
   const removeBanner = (): void => {
     const banner = document.getElementById(ID);
@@ -81,7 +82,7 @@
       button.removeEventListener('click', removeBanner);
       document.body.removeChild(banner);
     }
-  }
+  };
 
   const html = `
     <div>
