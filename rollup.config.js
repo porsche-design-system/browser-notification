@@ -1,15 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
-import {terser} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import pkg from './package.json';
-
-const commonPlugins = [
-  resolve({
-    extensions: ['.ts', '.js'],
-    resolveOnly: [/^@porsche-design-system\/.*$/]
-  })
-];
 
 export default [
   {
@@ -19,28 +12,23 @@ export default [
       dir: 'dist',
       format: 'umd',
       name: pkg.name,
-      exports: 'named'
+      exports: 'named',
     },
     plugins: [
-      ...commonPlugins,
       typescript({
         declaration: true,
-        declarationDir: 'dist/types'
+        declarationDir: 'dist/types',
       }),
-      json()
-    ]
+      json(),
+    ],
   },
   {
     input: 'src/index.ts',
     output: {
       dir: 'dist/esm',
-      format: 'esm'
+      format: 'esm',
     },
-    plugins: [
-      ...commonPlugins,
-      typescript(),
-      json()
-    ]
+    plugins: [typescript(), json()],
   },
   {
     input: 'src/init.ts',
@@ -49,14 +37,9 @@ export default [
       file: `./cdn/init.min.${pkg.version}.js`,
       format: 'umd',
       name: pkg.name,
-      exports: 'named'
+      exports: 'named',
     },
-    plugins: [
-      ...commonPlugins,
-      typescript(),
-      json(),
-      terser()
-    ]
+    plugins: [typescript(), json(), terser()],
   },
   {
     input: 'src/notification-banner.ts',
@@ -65,12 +48,8 @@ export default [
       file: `./cdn/notification-banner.min.${pkg.version}.js`,
       format: 'umd',
       name: pkg.name,
-      exports: 'named'
+      exports: 'named',
     },
-    plugins: [
-      ...commonPlugins,
-      typescript(),
-      terser()
-    ]
-  }
+    plugins: [typescript(), terser()],
+  },
 ];
