@@ -13,12 +13,13 @@ const generatePartial = async (): Promise<void> => {
 
   const initScript = fs
     .readFileSync(path.normalize(`./cdn/init.min.${version}.js`), 'utf8')
+    .replace(version, '${version}') // make hardcoded version dynamic
     .replace(/\\/g, '\\\\') // double escape is needed for output
     .replace(/^\s+|\s+$/g, ''); // replace new line at end
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `export const include = (): string => {
-  return '<script>${initScript}</script>';
+  return \`<script>${initScript}</script>\`;
 };
 `;
 
