@@ -29,7 +29,8 @@
   },
   "scripts": {
     "start": "yarn build && http-server ./www -p 4201",
-    "build": "yarn clean:build && yarn build:package && yarn build:www",
+    "build": "yarn clean:build && yarn build:generate && yarn build:package && yarn build:www",
+    "build:generate": "ts-node --project 'tsconfig.node.json' './scripts/generate.ts'",
     "build:package": "rollup -c rollup.config.js && ts-node --project 'tsconfig.node.json' './scripts/package.ts'",
     "build:www": "mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -40,6 +41,8 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^5.0.2",
+    "@types/html-minifier": "^4.0.0",
+    "html-minifier": "^4.0.0",
     "http-server": "^0.12.3",
     "prettier": "^2.1.2",
     "rollup": "^2.23.0",
