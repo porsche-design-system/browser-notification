@@ -8,10 +8,7 @@ import { version } from '../package.json';
   const getMSBrowserVersion = (): number | undefined => {
     const ua = window.navigator.userAgent || navigator.userAgent;
     const match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(ua);
-    if (match) {
-      return parseInt(match[2]);
-    }
-    return undefined;
+    return match ? parseInt(match[2]) : undefined;
   };
 
   const msBrowserVersion = getMSBrowserVersion();
