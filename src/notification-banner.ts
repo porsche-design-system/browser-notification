@@ -62,10 +62,13 @@
     body.appendChild(markup);
   };
 
+  const getBanner = () => document.getElementById(ID);
+  const getButton = (banner: HTMLElement) => banner.getElementsByTagName('button')[0];
+
   const applyLogic = (): void => {
-    const banner = document.getElementById(ID);
+    const banner = getBanner();
     if (banner) {
-      const button = banner.getElementsByTagName('button')[0];
+      const button = getButton(banner);
       button.addEventListener('click', removeBanner);
 
       setTimeout(() => {
@@ -75,9 +78,9 @@
   };
 
   const removeBanner = (): void => {
-    const banner = document.getElementById(ID);
+    const banner = getBanner();
     if (banner) {
-      const button = banner.getElementsByTagName('button')[0];
+      const button = getButton(banner);
       preventBannerFromBeingShown();
       button.removeEventListener('click', removeBanner);
       document.body.removeChild(banner);
