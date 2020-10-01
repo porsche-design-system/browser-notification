@@ -114,7 +114,7 @@ const generateCssAndHtml = async (): Promise<void> => {
       width: 100px;
       background: url(./cdn/browser-icons.png) 0 0;
       background-size: 300px 100px;
-      margin: 0 0 1rem;
+      margin: 0 auto 1rem;
     }
 
     #ID > div > div a:nth-child(2) i {
