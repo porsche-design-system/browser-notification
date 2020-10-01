@@ -16,21 +16,6 @@ const generateCssAndHtml = async (): Promise<void> => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `
   // prettier-ignore
-  const html = '${minifyHTML(`<div>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
-      <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
-      <path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/>
-    </svg>
-    <p>
-      CONTENT
-    </p>
-    <button type="button">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
-        <path d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"/>
-      </svg>
-    </button>
-  </div>`)}'.replace('CONTENT', locales[getLang()]);
-  // prettier-ignore
   const css = '${minifyCSS(`
     #ID {
     position: fixed;
@@ -127,6 +112,22 @@ const generateCssAndHtml = async (): Promise<void> => {
     padding: 0;
   }
   `)}'.replace(/ID/g, ID);
+  // prettier-ignore
+  const html = \`${minifyHTML(`<div>
+    STYLE
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
+      <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
+      <path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/>
+    </svg>
+    <p>
+      CONTENT
+    </p>
+    <button type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
+        <path d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"/>
+      </svg>
+    </button>
+  </div>`).replace('STYLE', '<style>${css}</style>')}\`.replace('CONTENT', locales[getLang()]);
 `;
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
