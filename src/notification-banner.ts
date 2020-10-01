@@ -10,18 +10,18 @@
 
   // prettier-ignore
   const locales: { [key in Lang]: string } = {
-    de: `<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><p>Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.</p>`,
-    ru: `<strong>Обратите внимание, что используемый Вами браузер больше не поддерживается.</strong><p>Рекомендуется перейти на последнюю версию ${chrome}, ${firefox} или ${edge}.</p>`,
-    fr: `<strong>Veuillez noter que le navigateur utilisé n'est plus pris en charge.</strong><p>Il serait préférable de passer directement à la dernière version de ${chrome}, ${firefox} ou ${edge}.</p>`,
-    en: `<strong>Your browser is out of date.</strong><p>Everyone needs a pit stop sometime. To enjoy our site as usual, please update your browser or download ${chrome}, ${firefox} or ${edge}.</p>`,
-    it: `<strong>Si prega di notare che il browser utilizzato non è più supportato.</strong><p>Si consiglia di aggiornare ${chrome}, ${firefox} o ${edge} all’ultima versione.</p>`,
-    pt: `<strong>É favor notar que o navegador usado já não é suportado.</strong><p>Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.</p>`,
-    es: `<strong>Tenga en cuenta que el navegador utilizado ya no es compatible.</strong><p>Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.</p>`,
-    ja: `<div>ご使用のブラウザはサポートされていませんのでご注意ください。</div><p>直接、最新版の ${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。</p>`,
-    ko: `<strong>Please note that the used browser is no longer supported.</strong><p>It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.</p>`,
-    zh: `<div>请注意，您正在使用的浏览器已不支持或版本太旧。</div><p>请安装使用最新版本的 ${chrome}、${firefox}或${edge}。</p>`,
-    nl: `<strong>Houd er rekening mee dat de gebruikte browser niet langer wordt ondersteund.</strong><p>U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.</p>`,
-    pl: `<strong>Należy pamiętać, że używana przeglądarka nie jest już obsługiwana.</strong><p>Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.</p>`,
+    de: `<strong>Der Browser, den Sie verwenden, wird nicht mehr unterstützt.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
+    ru: `<strong>Используемый вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию ${chrome}, ${firefox} или ${edge}.`,
+    fr: `<strong>Le navigateur que vous utilisez n'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de ${chrome}, ${firefox} ou ${edge}.`,
+    en: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    it: `<strong>Il browser utilizzato non è più supportato.</strong><br> Si consiglia di aggiornare ${chrome}, ${firefox} o ${edge} all’ultima versione.`,
+    pt: `<strong>O browser que está a utilizar já não é suportado.</strong><br> Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.`,
+    es: `<strong>El navegador que está utilizando ya no es compatible.</strong><br> Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.`,
+    ja: `お使いのブラウザはサポートされていません。<br> 直接、最新版の${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
+    ko: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    zh: `您所使用的浏览器已不再支持。<br> 请安装使用最新版本的${chrome}、${firefox}或${edge}。`,
+    nl: `<strong>De browser die u gebruikt wordt niet langer ondersteund.</strong><br> U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.`,
+    pl: `<strong>Przeglądarka, której używasz, nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`,
   };
 
   const getLang = (): Lang => {
