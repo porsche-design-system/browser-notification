@@ -8,9 +8,8 @@ import { version } from '../package.json';
   const supportsCustomElements = (): boolean => 'customElements' in window;
 
   if (!supportsCustomElements()) {
-    const body = document.getElementsByTagName('body')[0];
     const script = document.createElement('script');
     script.src = `${cdnPath}/notification-banner.min.${version}.js`;
-    body.appendChild(script);
+    document.getElementsByTagName('body')[0].appendChild(script);
   }
 })();
