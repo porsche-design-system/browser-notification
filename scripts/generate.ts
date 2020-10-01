@@ -15,6 +15,7 @@ const generateCssAndHtml = async (): Promise<void> => {
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `
+  // prettier-ignore
   const html = '${minifyHTML(`<div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
       <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
@@ -29,7 +30,7 @@ const generateCssAndHtml = async (): Promise<void> => {
       </svg>
     </button>
   </div>`)}'.replace('CONTENT', locales[getLang()]);
-
+  // prettier-ignore
   const css = '${minifyCSS(`
     #ID {
     position: fixed;
