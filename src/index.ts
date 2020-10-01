@@ -11,5 +11,5 @@ export const init = (options?: Options): string => {
 
 /* Auto Generated Below */
 export const include = (): string => {
-  return `<script>!function(n){"function"==typeof define&&define.amd?define(n):n()}((function(){"use strict";!function(){var n,e,t=(n=window.navigator.userAgent||navigator.userAgent,(e=/\\b(MSIE |Trident.*?rv:|Edge\\/)(\\d+)/.exec(n))?parseInt(e[2]):void 0);if(t&&t<=18){var i=document.getElementsByTagName("body")[0],o=document.createElement("script");o.src="https://cdn.ui.porsche.com/browser-notification-banner/notification-banner.min.${version}.js",i.appendChild(o)}}()}));</script>`;
+  return `<script>!function(n){"function"==typeof define&&define.amd?define(n):n()}((function(){"use strict";!function(){if(!("customElements"in window)){var n=document.getElementsByTagName("body")[0],e=document.createElement("script");e.src="https://cdn.ui.porsche.com/browser-notification-banner/notification-banner.min.${version}.js",n.appendChild(e)}}()}));</script>`;
 };
