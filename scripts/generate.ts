@@ -117,11 +117,11 @@ const generateCssAndHtml = async (): Promise<void> => {
       margin: 0 auto 1rem;
     }
 
-    #ID > div > div a:nth-child(2) i {
+    #ID > div > div a:nth-child(3) i {
       background-position: -100px 0;
     }
 
-    #ID > div > div a:nth-child(3) i {
+    #ID > div > div a:nth-child(2) i {
       background-position: -200px 0;
     }
   }
