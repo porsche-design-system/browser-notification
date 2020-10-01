@@ -127,7 +127,9 @@ const generateCssAndHtml = async (): Promise<void> => {
         <path d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"/>
       </svg>
     </button>
-  </div>`).replace('STYLE', '<style>${css}</style>')}\`.replace('CONTENT', locales[getLang()]);
+  </div>`)
+    .replace('STYLE', '<style>${css}</style>')
+    .replace('CONTENT', '${locales[getLang()]}')}\`;
 `;
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
