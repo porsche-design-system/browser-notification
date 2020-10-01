@@ -9,19 +9,55 @@
   type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl';
 
   // prettier-ignore
-  const locales: { [key in Lang]: string } = {
-    de: `<strong>Der Browser, den Sie verwenden, wird nicht mehr unterstützt.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
-    ru: `<strong>Используемый вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию ${chrome}, ${firefox} или ${edge}.`,
-    fr: `<strong>Le navigateur que vous utilisez n'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de ${chrome}, ${firefox} ou ${edge}.`,
-    en: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
-    it: `<strong>Il browser utilizzato non è più supportato.</strong><br> Si consiglia di aggiornare ${chrome}, ${firefox} o ${edge} all’ultima versione.`,
-    pt: `<strong>O browser que está a utilizar já não é suportado.</strong><br> Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.`,
-    es: `<strong>El navegador que está utilizando ya no es compatible.</strong><br> Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.`,
-    ja: `お使いのブラウザはサポートされていません。<br> 直接、最新版の${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
-    ko: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
-    zh: `您所使用的浏览器已不再支持。<br> 请安装使用最新版本的${chrome}、${firefox}或${edge}。`,
-    nl: `<strong>De browser die u gebruikt wordt niet langer ondersteund.</strong><br> U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.`,
-    pl: `<strong>Przeglądarka, której używasz, nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`,
+  const locales: { [key in Lang]: { title: string; content: string } } = {
+    de: {
+      title: 'Zeit für ein kleines Update',
+      content: `Der Browser, den Sie verwenden, wird nicht mehr unterstützt.<br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
+    },
+    ru: {
+      title: 'Время для небольшого обновления',
+      content: `Используемый вами браузер больше не поддерживается.<br> Рекомендуется перейти на последнюю версию ${chrome}, ${firefox} или ${edge}.`,
+    },
+    fr: {
+      title: "Le temps d'une petite mise à jour",
+      content: `Le navigateur que vous utilisez n'est plus pris en charge.<br> Il serait préférable de passer directement à la dernière version de ${chrome}, ${firefox} ou ${edge}.`,
+    },
+    en: {
+      title: 'Time for a small update',
+      content: `The browser you are using is no longer supported.<br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    },
+    it: {
+      title: 'Tempo per un piccolo aggiornamento',
+      content: `Il browser utilizzato non è più supportato.<br> Si consiglia di aggiornare ${chrome}, ${firefox} o ${edge} all’ultima versione.`,
+    },
+    pt: {
+      title: 'Tempo para uma pequena actualização',
+      content: `O browser que está a utilizar já não é suportado.<br> Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.`,
+    },
+    es: {
+      title: 'Es hora de una pequeña actualización',
+      content: `El navegador que está utilizando ya no es compatible.<br> Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.`,
+    },
+    ja: {
+      title: '小さな更新の時間',
+      content: `お使いのブラウザはサポートされていません。<br>直接、最新版の${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
+    },
+    ko: {
+      title: 'Time for a small update',
+      content: `The browser you are using is no longer supported.<br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    },
+    zh: {
+      title: '是时候来个小更新了',
+      content: `您所使用的浏览器已不再支持。请安装使用最新版本的${chrome}、${firefox}或${edge}。`,
+    },
+    nl: {
+      title: 'Tijd voor een kleine update',
+      content: `De browser die u gebruikt wordt niet langer ondersteund.<br> U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.`,
+    },
+    pl: {
+      title: 'Czas na małą aktualizację',
+      content: `Przeglądarka, której używasz, nie jest już obsługiwana.<br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`,
+    },
   };
 
   const getLang = (): Lang => {
@@ -31,9 +67,10 @@
   };
 
   const getContent = (): string => {
-    const locale = locales[getLang()];
+    const { title, content } = locales[getLang()];
     const isDesktop = document.documentElement.clientWidth >= 768;
-    return `${locale}${
+    // strip <br> tags on mobile
+    return `<strong>${title}</strong><p>${isDesktop ? content : content.replace('<br>', '')}</p>${
       isDesktop ? `<div>${[chrome, firefox, edge].map((link) => link.replace('>', '><i></i>')).join('')}</div>` : ''
     }`;
   };
