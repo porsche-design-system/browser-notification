@@ -34,7 +34,7 @@
     "build:generate": "ts-node --project 'tsconfig.node.json' './scripts/generate.ts'",
     "build:partial": "ts-node --project 'tsconfig.node.json' './scripts/partial.ts'",
     "build:lib": "rollup -c rollup.config.js",
-    "build:cdn": "rollup -c rollup.config.cdn.js",
+    "build:cdn": "rollup -c rollup.config.cdn.js && cp ./src/browser-icons.png ./cdn",
     "build:package": "ts-node --project 'tsconfig.node.json' './scripts/package.ts'",
     "build:www": "mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
     "partial": "partial=$(node -e 'console.log(require(\"./dist\").include().replace(/&/g, \"\\\\&\").replace(/(\\\\[bd\\/])/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*<\\/script>' && sed -E -e \"s@$regex@$partial@\" public/index.html | tee public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
