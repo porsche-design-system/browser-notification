@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Make banner block entire screen
+
 ### [1.0.0-rc.1] - 2020-09-30
 
 #### Added
