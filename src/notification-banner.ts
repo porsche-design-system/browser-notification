@@ -9,20 +9,20 @@
   type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl';
 
   // prettier-ignore
-  const locales: { [key in Lang]: string; } = {
-    de: `<strong>Bitte beachten Sie, dass der verwendete Browser nicht mehr unterstützt wird.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
-    ru: `<strong>Обратите внимание, что используемый Вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию ${chrome}, ${firefox} или ${edge}.`,
-    fr: `<strong>Veuillez noter que le navigateur utilisé n\'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de ${chrome}, ${firefox} ou ${edge}.`,
-    en: `<strong>Please note that the used browser is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
-    it: `<strong>Si prega di notare che il browser utilizzato non è più supportato.</strong><br> Si consiglia di aggiornare ${chrome}, ${firefox} o ${edge} all’ultima versione.`,
-    pt: `<strong>É favor notar que o navegador usado já não é suportado.</strong><br> Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.`,
-    es: `<strong>Tenga en cuenta que el navegador utilizado ya no es compatible.</strong><br> Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.`,
-    ja: `ご使用のブラウザはサポートされていませんのでご注意ください。直接、最新版の<br> ${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
-    ko: `<strong>Please note that the used browser is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
-    zh: `请注意，您正在使用的浏览器已不支持或版本太旧。请安装使用最新版本的<br> ${chrome}、${firefox}或${edge}。`,
-    nl: `<strong>Houd er rekening mee dat de gebruikte browser niet langer wordt ondersteund.</strong><br> U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.`,
-    pl: `<strong>Należy pamiętać, że używana przeglądarka nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`
-  }
+  const locales: { [key in Lang]: string } = {
+    de: `<strong>Der Browser, den Sie verwenden, wird nicht mehr unterstützt.</strong><br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
+    ru: `<strong>Используемый вами браузер больше не поддерживается.</strong><br> Рекомендуется перейти на последнюю версию ${chrome}, ${firefox} или ${edge}.`,
+    fr: `<strong>Le navigateur que vous utilisez n'est plus pris en charge.</strong><br> Il serait préférable de passer directement à la dernière version de ${chrome}, ${firefox} ou ${edge}.`,
+    en: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    it: `<strong>Il browser utilizzato non è più supportato.</strong><br> Si consiglia di aggiornare ${chrome}, ${firefox} o ${edge} all’ultima versione.`,
+    pt: `<strong>O browser que está a utilizar já não é suportado.</strong><br> Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.`,
+    es: `<strong>El navegador que está utilizando ya no es compatible.</strong><br> Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.`,
+    ja: `お使いのブラウザはサポートされていません。<br> 直接、最新版の${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
+    ko: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    zh: `您所使用的浏览器已不再支持。<br> 请安装使用最新版本的${chrome}、${firefox}或${edge}。`,
+    nl: `<strong>De browser die u gebruikt wordt niet langer ondersteund.</strong><br> U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.`,
+    pl: `<strong>Przeglądarka, której używasz, nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`,
+  };
 
   const preventBannerFromBeingShown = (): void => {
     sessionStorage.setItem(ID, 'true');
@@ -72,7 +72,7 @@
   };
 
   /* Auto Generated Start */
-  
+
   // prettier-ignore
   const css = '#ID{position:fixed;display:flex;justify-content:center;margin:0;padding:0 7vw;top:-100%;left:0;right:0;box-sizing:border-box;z-index:99999;opacity:0;transition:top .5s ease 1s,opacity .5s ease 1s}#ID.ID--loaded{top:3rem;opacity:1}#ID>div{position:relative;width:100%;max-width:96rem;margin:0;padding:1rem 3rem 1rem 1rem;display:flex;background-color:#fff5e5;border-top:4px solid #ff9b00;box-shadow:0 0 2.1875rem 0 #c9cacb}#ID>div>svg{width:3rem;height:3rem;margin:0;padding:0;flex-shrink:0}#ID>div>p{margin:0;padding:0 1.5rem 0 1rem;max-width:59.25rem;font-size:1rem;font-family:PorscheNext-Regular,"Arial Narrow",Arial,sans-serif;font-weight:400;line-height:1.5;color:#000}#ID>div>p>a{margin:0;padding:0;color:#000;font-weight:700;text-decoration:underline;white-space:nowrap;transition:color .24s ease}#ID>div>p>a:hover{color:#d5001c}#ID>div>button{width:1.5rem;height:1.5rem;border:none;border-radius:0;margin:0;padding:0;background-color:transparent;position:absolute;right:1rem;top:1rem;cursor:pointer;transition:color .24s ease}#ID>div>button:hover{color:#d5001c}#ID>div>button:focus{outline:2px solid #00d5b9;outline-offset:1px}#ID>div>button>svg{fill:currentColor;margin:0;padding:0}'.replace(/ID/g, ID);
   // prettier-ignore
