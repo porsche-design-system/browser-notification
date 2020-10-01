@@ -76,11 +76,10 @@
   };
 
   const addMarkup = (html: string): void => {
-    const body = document.body;
     const markup = document.createElement('div');
     markup.id = ID;
     markup.innerHTML = html;
-    body.appendChild(markup);
+    document.body.appendChild(markup);
   };
 
   const applyLogic = (): void => {
