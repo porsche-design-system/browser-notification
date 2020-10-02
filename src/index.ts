@@ -11,5 +11,5 @@ export const init = (options?: Options): string => {
 
 /* Auto Generated Below */
 export const include = (): string => {
-  return `<script>!function(){if(!("customElements"in window)){var n=document.createElement("script");n.src="https://cdn.ui.porsche.com/browser-notification-banner/overlay.min.${version}.js",document.body.appendChild(n)}}();</script>`;
+  return `<script>!function(){var n,e=function(n){var e=document.createElement("script");e.src="https://cdn.ui.porsche.com/browser-notification-banner/"+n+".js",document.body.appendChild(e)};"customElements"in window?((n=/\\b(MSIE |Trident.*?rv:|Edge\\/)(\\d+)/.exec(window.navigator.userAgent||navigator.userAgent))?parseInt(n[2]):-1)<=18||e("banner.min.${version}"):e("overlay.min.1.0.0-rc.1")}();</script>`;
 };

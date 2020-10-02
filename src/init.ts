@@ -1,15 +1,14 @@
 import { version } from '../package.json';
+import { CDN_PATH, supportsCustomElements, supportsMsBrowser } from './init-helpers';
 
-((): void => {
-  // TODO: add staging concept
-  const cdnPath = 'https://cdn.ui.porsche.com/browser-notification-banner';
-  // const cdnPath = './cdn';
+const init = (file: string): void => {
+  const script = document.createElement('script');
+  script.src = `${CDN_PATH}/${file}.js`;
+  document.body.appendChild(script);
+};
 
-  const supportsCustomElements = (): boolean => 'customElements' in window;
-
-  if (!supportsCustomElements()) {
-    const script = document.createElement('script');
-    script.src = `${cdnPath}/overlay.min.${version}.js`;
-    document.body.appendChild(script);
-  }
-})();
+if (!supportsCustomElements()) {
+  init(`overlay.min.${version}`);
+} else if (!supportsMsBrowser()) {
+  init(`banner.min.1.0.0-rc.1`); // TODO: bring back banner for better versioning?
+}
