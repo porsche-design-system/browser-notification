@@ -8,26 +8,35 @@ const updateContent = (oldContent: string, newContent: string): string => {
 ${newContent}`;
 };
 
-const generatePartial = async (): Promise<void> => {
-  const targetFile = path.normalize('./src/index.ts');
+type ScriptName = 'init' | 'init-banner' | 'init-overlay';
 
-  const initScript = fs
-    .readFileSync(path.normalize(`./cdn/init.min.${version}.js`), 'utf8')
+const getCdnScript = (name: ScriptName): string =>
+  fs
+    .readFileSync(path.normalize(`./cdn/${name}.min.${version}.js`), 'utf8')
     .replace(version, '${version}') // make hardcoded version dynamic
     .replace(/\\/g, '\\\\') // double escape is needed for output
     .replace(/^\s+|\s+$/g, ''); // replace new line at end
 
+const generatePartials = async (): Promise<void> => {
+  const targetFile = path.normalize('./src/index.ts');
   const oldContent = fs.readFileSync(targetFile, 'utf8');
-  const newContent = `export const include = (): string => {
-  return \`<script>${initScript}</script>\`;
-};
-`;
+
+  const scripts: ScriptName[] = ['init', 'init-banner', 'init-overlay'];
+  const newContent = scripts
+    .map((script) => {
+      let partialNameSuffix = script.replace(/init-?/, '');
+      if (partialNameSuffix.length > 0) {
+        partialNameSuffix = partialNameSuffix[0].toUpperCase() + partialNameSuffix.slice(1);
+      }
+      return `export const include${partialNameSuffix} = (): string => \`<script>${getCdnScript(script)}</script>\`;`;
+    })
+    .join('\n');
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
 (async (): Promise<void> => {
-  await generatePartial().catch((e) => {
+  await generatePartials().catch((e) => {
     console.error(e);
     process.exit(1);
   });
