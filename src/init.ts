@@ -13,9 +13,8 @@ import { version } from '../package.json';
 
   const msBrowserVersion = getMSBrowserVersion();
   if (msBrowserVersion && msBrowserVersion <= 18) {
-    const body = document.getElementsByTagName('body')[0];
     const script = document.createElement('script');
     script.src = `${cdnPath}/notification-banner.min.${version}.js`;
-    body.appendChild(script);
+    document.body.appendChild(script);
   }
 })();
