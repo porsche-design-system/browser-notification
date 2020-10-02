@@ -11,7 +11,7 @@ ${newContent}
 };
 
 const generateCssAndHtml = async (): Promise<void> => {
-  const targetFile = path.normalize('./src/notification-banner.ts');
+  const targetFile = path.normalize('./src/banner.ts');
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `
