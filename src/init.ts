@@ -9,7 +9,7 @@ import { version } from '../package.json';
 
   if (!supportsCustomElements()) {
     const script = document.createElement('script');
-    script.src = `${cdnPath}/notification-banner.min.${version}.js`;
+    script.src = `${cdnPath}/overlay.min.${version}.js`;
     document.body.appendChild(script);
   }
 })();

@@ -18,10 +18,10 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
-    input: 'src/notification-banner.ts',
+    input: 'src/overlay.ts',
     output: {
       esModule: false,
-      file: `./cdn/notification-banner.min.${pkg.version}.js`,
+      file: `./cdn/overlay.min.${pkg.version}.js`,
       format: 'iife',
       name: pkg.name,
       exports: 'named',
