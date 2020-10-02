@@ -85,7 +85,14 @@ const generateCssAndHtml = async (): Promise<void> => {
     color: #d5001c;
   }
 
+
+  #ID .show--at-768,
+  #ID .show--at-768-ilb { display: none; }
+
   @media only screen and (min-width: 768px) {
+    #ID .show--at-768 { display: block; }
+    #ID .show--at-768-ilb { display: inline-block; }
+
     #ID > div > svg {
       width: 8.5rem;
       height: 8.5rem;
