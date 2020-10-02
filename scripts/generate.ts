@@ -6,7 +6,7 @@ const updateContent = (oldContent: string, newContent: string): string => {
   const separatorStart = '/* Auto Generated Start */';
   const separatorEnd = '/* Auto Generated End */';
   return `${oldContent.substr(0, oldContent.indexOf(separatorStart))}${separatorStart}
-  ${newContent}
+${newContent}
   ${oldContent.substr(oldContent.indexOf(separatorEnd))}`;
 };
 
