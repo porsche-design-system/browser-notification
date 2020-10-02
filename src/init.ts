@@ -10,6 +10,6 @@ import { version } from '../package.json';
   if (!supportsCustomElements()) {
     const script = document.createElement('script');
     script.src = `${cdnPath}/notification-banner.min.${version}.js`;
-    document.getElementsByTagName('body')[0].appendChild(script);
+    document.body.appendChild(script);
   }
 })();
