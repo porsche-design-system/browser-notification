@@ -30,7 +30,7 @@ const generateCssAndHtml = async (): Promise<void> => {
     left: 0;
     right: 0;
     box-sizing: border-box;
-    z-index: 99999;
+    z-index: 999999;
     background: #fff;
   }
   

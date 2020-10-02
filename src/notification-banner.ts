@@ -1,5 +1,5 @@
 ((): void => {
-  const ID = 'pds-browser-notification-banner';
+  const ID = 'pds-browser-notification-overlay';
 
   const linkAttributes = 'target=_blank rel="nofollow noopener"';
   const chrome = `<a href=https://www.google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;
