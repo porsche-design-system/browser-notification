@@ -1,24 +1,14 @@
-import {version} from '../package.json';
+import { version } from '../package.json';
+import { CDN_PATH, isEdge18, supportsCustomElements } from './init-helpers';
 
-((): void => {
-  // TODO: add staging concept
-  const cdnPath = 'https://cdn.ui.porsche.com/browser-notification-banner';
-  // const cdnPath = './cdn';
+const init = (file: 'banner' | 'overlay'): void => {
+  const script = document.createElement('script');
+  script.src = `${CDN_PATH}/${file}.min.${version}.js`;
+  document.body.appendChild(script);
+};
 
-  const getMSBrowserVersion = (): number | undefined => {
-    const ua = window.navigator.userAgent || navigator.userAgent;
-    const match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(ua);
-    if (match) {
-      return parseInt(match[2]);
-    }
-    return undefined;
-  }
-
-  const msBrowserVersion = getMSBrowserVersion();
-  if (msBrowserVersion && msBrowserVersion <= 18) {
-    const body = document.getElementsByTagName('body')[0];
-    const script = document.createElement('script');
-    script.src = `${cdnPath}/notification-banner.min.${version}.js`;
-    body.appendChild(script);
-  }
-})();
+if (isEdge18()) {
+  init('banner');
+} else if (!supportsCustomElements()) {
+  init('overlay');
+}
