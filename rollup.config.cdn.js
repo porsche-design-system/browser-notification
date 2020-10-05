@@ -36,6 +36,14 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
+    input: 'src/banner.ts',
+    output: {
+      ...outputConfig,
+      file: `./cdn/banner.min.${pkg.version}.js`,
+    },
+    plugins: [typescript(), terser()],
+  },
+  {
     input: 'src/overlay.ts',
     output: {
       ...outputConfig,

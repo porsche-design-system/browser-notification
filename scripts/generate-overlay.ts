@@ -1,14 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { minifyHTML, minifyCSS } from './utils';
-
-const updateContent = (oldContent: string, newContent: string): string => {
-  const separatorStart = '/* Auto Generated Start */';
-  const separatorEnd = '/* Auto Generated End */';
-  return `${oldContent.substr(0, oldContent.indexOf(separatorStart))}${separatorStart}
-${newContent}
-  ${oldContent.substr(oldContent.indexOf(separatorEnd))}`;
-};
+import { minifyHTML, minifyCSS, updateContent } from './utils';
 
 const generateCssAndHtml = async (): Promise<void> => {
   const targetFile = path.normalize('./src/overlay.ts');
