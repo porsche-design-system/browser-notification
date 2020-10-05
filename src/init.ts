@@ -10,5 +10,5 @@ const init = (file: string): void => {
 if (!supportsCustomElements()) {
   init(`overlay.min.${version}`);
 } else if (!supportsMsBrowser()) {
-  init(`banner.min.1.0.0-rc.1`); // TODO: bring back banner for better versioning?
+  init(`banner.min.${version}`);
 }

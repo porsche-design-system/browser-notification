@@ -1,5 +1,5 @@
 // TODO: add staging concept
-export const CDN_PATH = 'https://cdn.ui.porsche.com/browser-notification-banner';
+export const CDN_PATH = 'https://cdn.ui.porsche.com/browser-notification';
 
 export const supportsCustomElements = (): boolean => 'customElements' in window;
 

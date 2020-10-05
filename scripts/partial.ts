@@ -28,7 +28,8 @@ const generatePartials = async (): Promise<void> => {
       if (partialNameSuffix.length > 0) {
         partialNameSuffix = partialNameSuffix[0].toUpperCase() + partialNameSuffix.slice(1);
       }
-      return `export const include${partialNameSuffix} = (): string => \`<script>${getCdnScript(script)}</script>\`;`;
+      return `// prettier-ignore
+export const include${partialNameSuffix} = (): string => \`<script>${getCdnScript(script)}</script>\`;`;
     })
     .join('\n');
 
