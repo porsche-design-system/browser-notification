@@ -1,14 +1,14 @@
 import { version } from '../package.json';
 import { CDN_PATH, supportsCustomElements, supportsMsBrowser } from './init-helpers';
 
-const init = (file: string): void => {
+const init = (file: 'banner' | 'overlay'): void => {
   const script = document.createElement('script');
-  script.src = `${CDN_PATH}/${file}.js`;
+  script.src = `${CDN_PATH}/${file}.min.${version}.js`;
   document.body.appendChild(script);
 };
 
 if (!supportsCustomElements()) {
-  init(`overlay.min.${version}`);
+  init('overlay');
 } else if (!supportsMsBrowser()) {
-  init(`banner.min.${version}`);
+  init('banner');
 }
