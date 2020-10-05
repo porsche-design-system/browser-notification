@@ -1,9 +1,9 @@
 ![Porsche Marque](https://upload.wikimedia.org/wikipedia/de/thumb/7/70/Porsche_Logo.svg/258px-Porsche_Logo.svg.png)
 
-# Porsche - Browser Notification Banner
+# Porsche - Browser Notification
 
 ## Introduction
-Stand-alone self invoking JS snippet to show a Notification Banner if IE11 is detected. 
+Stand-alone self invoking JS snippet to show a Notification Banner or Overlay if IE11 or missing customElements support is detected. 
 
 ## Setup
 
@@ -65,7 +65,7 @@ As final check start the demo application locally and have a look at it.
 1. Run `./docker.sh run-prepare-release ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Release
-1. Create a commit with following message structure `Release Porsche Notification Banner v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure `Release Porsche Notification v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/v1.2.3`
 1. Create pull request and start review
 1. Merge into __master__ branch (then CI/CD will trigger a npm release and cdn artifacts deployment automatically)
