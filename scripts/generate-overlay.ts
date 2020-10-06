@@ -61,6 +61,7 @@ const generateCssAndHtml = async (): Promise<void> => {
   #ID > div > p {
     margin: .5rem 0 0;
     max-width: 59.25rem;
+    width: 100%;
   }
   
   #ID > div a {
