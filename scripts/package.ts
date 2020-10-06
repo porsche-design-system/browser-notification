@@ -35,7 +35,7 @@ const savePackageJson = () => {
   fs.writeFileSync(target, data);
 };
 
-copyFiles(['README.md', 'CHANGELOG.md', 'LICENSE']);
+copyFiles(['CHANGELOG.md', 'LICENSE']);
 removePropsFromPackageJson(['private', 'scripts', 'devDependencies']);
 addPropsToPackageJson({ main: 'index.js', module: 'esm/index.js', types: 'types/index.d.ts' });
 savePackageJson();
