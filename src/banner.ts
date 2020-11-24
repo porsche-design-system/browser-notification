@@ -6,7 +6,7 @@
   const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
   const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
 
-  type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl';
+  type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk';
 
   // prettier-ignore
   const locales: { [key in Lang]: string } = {
@@ -18,10 +18,21 @@
     pt: `<strong>O browser que está a utilizar já não é suportado.</strong><br> Seria melhor mudar directamente para a versão mais recente do ${chrome}, ${firefox} ou ${edge}.`,
     es: `<strong>El navegador que está utilizando ya no es compatible.</strong><br> Sería mejor cambiar directamente a la última versión de ${chrome}, ${firefox} o ${edge}.`,
     ja: `お使いのブラウザはサポートされていません。<br> 直接、最新版の${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
-    ko: `<strong>The browser you are using is no longer supported.</strong><br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+    ko: `이용 중인 브라우저가 더 이상 지원되지 않습니다.<br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} 또는 ${edge} 의 최신 버전으로 바로 전환해 주시는 것이 가장 좋습니다.`,
     zh: `您所使用的浏览器已不再支持。<br> 请安装使用最新版本的${chrome}、${firefox}或${edge}。`,
     nl: `<strong>De browser die u gebruikt wordt niet langer ondersteund.</strong><br> U kunt het beste direct overschakelen op de nieuwste versie van ${chrome}, ${firefox} of ${edge}.`,
     pl: `<strong>Przeglądarka, której używasz, nie jest już obsługiwana.</strong><br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`,
+    cs: `<strong>Prohlížeč, který používáte, již není podporován.</strong><br> Bylo by nejlepší, kdybyste přímo využívali nejnovější verzi prohlížečů ${chrome}, ${firefox} nebo ${edge}.`,
+    da: `<strong>Den browser, du bruger, understøttes ikke længere.</strong><br> Det ville være bedst at skifte direkte til den nyeste version af ${chrome}, ${firefox} eller ${edge}.`,
+    et: `<strong>Teie kasutatav brauser ei ühildu enam.</strong><br> Kõige parem oleks, kui asuksite kasutama brauseri ${chrome}, ${firefox} või ${edge} uusimat versiooni.`,
+    fi: `<strong>Käyttämääsi selainta ei enää tueta.</strong><br> Suosittelemme käyttämään ${chrome}, ${firefox} tai ${edge} uusinta versiota.`,
+    lt: `<strong>Jūsų naudojama naršyklė daugiau nepalaikoma.</strong><br> Geriausia būtų tiesiogiai įjungti naujausią ${chrome}, ${firefox} arba ${edge} versiją.`,
+    lv: `<strong>Jūsu lietotais pārlūks vairs netiek atbalstīts.</strong><br> Vislabāk būtu tieši pārslēgties uz ${chrome}, ${firefox} vai ${edge} jaunāko versiju.`,
+    no: `<strong>Nettleseren du bruker, støttes ikke lenger.</strong><br> Det er best om du bytter direkte til nyeste versjon av ${chrome}, ${firefox} eller ${edge}.`,
+    sl: `<strong>Brskalnik, ki ga uporabljate, ni več podprt.</strong><br> Najbolje bi bilo, da nemudoma opravite posodobitev na zadnjo različico brskalnikov ${chrome}, ${firefox} ali ${edge}.`,
+    sv: `<strong>Webbläsaren du använder stöds inte längre.</strong><br> Det bästa är om du byter direkt till senaste versionen av ${chrome}, ${firefox} eller ${edge}.`,
+    tr: `<strong>Kullandığınız tarayıcı artık desteklenmemektedir.</strong><br> Direkt olarak ${chrome}, ${firefox} ya da ${edge} in en son versiyonuna geçmeniz en iyisi olacaktır.`,
+    uk: `<strong>Браузер, яким ви користуєтесь, більше не підтримується.</strong><br> Радимо одразу перейти на останню версію ${chrome}, ${firefox} або ${edge}.`,
   };
 
   const preventBannerFromBeingShown = (): void => {
