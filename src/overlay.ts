@@ -6,7 +6,7 @@
   const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
   const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
 
-  type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl';
+  type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk';
 
   // prettier-ignore
   const locales: { [key in Lang]: { title: string; content: string } } = {
@@ -43,8 +43,8 @@
       content: `お使いのブラウザはサポートされていません。<br>直接、最新版の${chrome}、${firefox}、${edge}に切り替えた方が良いでしょう。`,
     },
     ko: {
-      title: 'Time for a small update',
-      content: `The browser you are using is no longer supported.<br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} or ${edge}.`,
+      title: '약간의 업데이트를 해야 할 시간입니다',
+      content: `이용 중인 브라우저가 더 이상 지원되지 않습니다.<br> It would be best to directly switch to the latest version of ${chrome}, ${firefox} 또는 ${edge} 의 최신 버전으로 바로 전환해 주시는 것이 가장 좋습니다.`,
     },
     zh: {
       title: '是时候来个小更新了',
@@ -57,6 +57,50 @@
     pl: {
       title: 'Czas na małą aktualizację',
       content: `Przeglądarka, której używasz, nie jest już obsługiwana.<br> Najlepiej bezpośrednio przełączyć się na najnowszą wersję ${chrome}, ${firefox} lub ${edge}.`,
+    },
+    cs: {
+      title: 'Čas na malou aktualizaci',
+      content: `Prohlížeč, který používáte, již není podporován.<br> Bylo by nejlepší, kdybyste přímo využívali nejnovější verzi prohlížečů ${chrome}, ${firefox} nebo ${edge}.`,
+    },
+    da: {
+      title: 'Tid til en lille opdatering',
+      content: `Den browser, du bruger, understøttes ikke længere.<br> Det ville være bedst at skifte direkte til den nyeste version af ${chrome}, ${firefox} eller ${edge}.`,
+    },
+    et: {
+      title: 'Aeg väikseks uuenduseks',
+      content: `Teie kasutatav brauser ei ühildu enam.<br> Kõige parem oleks, kui asuksite kasutama brauseri ${chrome}, ${firefox} või ${edge} uusimat versiooni.`,
+    },
+    fi: {
+      title: 'Aika pienelle päivitykselle',
+      content: `Käyttämääsi selainta ei enää tueta.<br> Suosittelemme käyttämään ${chrome}, ${firefox} tai ${edge} uusinta versiota.`,
+    },
+    lt: {
+      title: 'Laikas nedideliam atnaujinimui',
+      content: `Jūsų naudojama naršyklė daugiau nepalaikoma.<br> Geriausia būtų tiesiogiai įjungti naujausią ${chrome}, ${firefox} arba ${edge} versiją.`,
+    },
+    lv: {
+      title: 'Laiks nelielam atjauninājumam',
+      content: `Jūsu lietotais pārlūks vairs netiek atbalstīts.<br> Vislabāk būtu tieši pārslēgties uz ${chrome}, ${firefox} vai ${edge} jaunāko versiju.`,
+    },
+    no: {
+      title: 'På tide med en liten oppdatering',
+      content: `Nettleseren du bruker, støttes ikke lenger.<br> Det er best om du bytter direkte til nyeste versjon av ${chrome}, ${firefox} eller ${edge}.`,
+    },
+    sl: {
+      title: 'Čas je za manjšo posodobitev.',
+      content: `Brskalnik, ki ga uporabljate, ni več podprt.<br> Najbolje bi bilo, da nemudoma opravite posodobitev na zadnjo različico brskalnikov ${chrome}, ${firefox} ali ${edge}.`,
+    },
+    sv: {
+      title: 'Dags för en liten uppdatering',
+      content: `Webbläsaren du använder stöds inte längre.<br> Det bästa är om du byter direkt till senaste versionen av ${chrome}, ${firefox} eller ${edge}.`,
+    },
+    tr: {
+      title: 'Küçük bir güncellemenin zamanı geldi',
+      content: `Kullandığınız tarayıcı artık desteklenmemektedir.<br> Direkt olarak ${chrome}, ${firefox} ya da ${edge} in en son versiyonuna geçmeniz en iyisi olacaktır.`,
+    },
+    uk: {
+      title: 'Час провести невеличке оновлення',
+      content: `Браузер, яким ви користуєтесь, більше не підтримується.<br> Радимо одразу перейти на останню версію ${chrome}, ${firefox} або ${edge}.`,
     },
   };
 
