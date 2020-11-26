@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.0.0] - 2020-11-26
+
 #### Added
 - Translations for `ko, cs, da, et, fi, lt, lv, no, sl, sv, tr, uk`
 
