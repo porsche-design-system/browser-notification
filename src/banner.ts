@@ -6,7 +6,30 @@
   const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
   const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
 
-  type Lang = 'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk';
+  type Lang =
+    | 'de'
+    | 'ru'
+    | 'fr'
+    | 'en'
+    | 'it'
+    | 'pt'
+    | 'es'
+    | 'ja'
+    | 'ko'
+    | 'zh'
+    | 'nl'
+    | 'pl'
+    | 'cs'
+    | 'da'
+    | 'et'
+    | 'fi'
+    | 'lt'
+    | 'lv'
+    | 'no'
+    | 'sl'
+    | 'sv'
+    | 'tr'
+    | 'uk';
 
   // prettier-ignore
   const locales: { [key in Lang]: string } = {
