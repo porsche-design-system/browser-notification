@@ -27,6 +27,7 @@
   "bugs": {
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
+  "prettier": "@porsche-design-system/prettier-config",
   "scripts": {
     "postbuild": "yarn partial",
     "start": "yarn build && http-server ./www -p 4201",
@@ -45,6 +46,7 @@
     "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./www"
   },
   "devDependencies": {
+    "@porsche-design-system/prettier-config": "^1.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@types/html-minifier": "^4.0.0",
