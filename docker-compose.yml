@@ -9,6 +9,7 @@ services:
       - "4201:4201"
     environment:
       - HOME=/home/porsche-browser-notification-banner
+      - PORSCHE_NPM_REGISTRY_TOKEN
     volumes:
       - ./:/opt/porsche-browser-notification-banner-repository:cached
       - home:/home/porsche-browser-notification-banner
