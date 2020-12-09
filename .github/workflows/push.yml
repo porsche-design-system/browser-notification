@@ -26,7 +26,7 @@ jobs:
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
-         NPM_REGISTRY_TOKEN: ${{ secrets.NPM_REGISTRY_TOKEN }}
+         PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
