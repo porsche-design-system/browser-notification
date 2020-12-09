@@ -20,6 +20,7 @@ cleanup_credentials() {
 setup_credentials() {
   echo "task: [$(date)] \"setup_credentials\""
   echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
+  echo "//porscheui.jfrog.io/porscheui/api/npm/npm-local/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" >> "${HOME}/.npmrc"
 }
 
 trap cleanup_credentials EXIT
