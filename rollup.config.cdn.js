@@ -12,18 +12,10 @@ const outputConfig = {
 
 export default [
   {
-    input: 'src/init.ts',
-    output: {
-      ...outputConfig,
-      file: `./cdn/init.min.${pkg.version}.js`,
-    },
-    plugins: [typescript(), json(), terser()],
-  },
-  {
     input: 'src/init-banner.ts',
     output: {
       ...outputConfig,
-      file: `./cdn/init-banner.min.${pkg.version}.js`,
+      file: `./tmp/init-banner.min.${pkg.version}.js`,
     },
     plugins: [typescript(), json(), terser()],
   },
@@ -31,7 +23,7 @@ export default [
     input: 'src/init-overlay.ts',
     output: {
       ...outputConfig,
-      file: `./cdn/init-overlay.min.${pkg.version}.js`,
+      file: `./tmp/init-overlay.min.${pkg.version}.js`,
     },
     plugins: [typescript(), json(), terser()],
   },

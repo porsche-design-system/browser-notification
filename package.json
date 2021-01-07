@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/browser-notification",
-  "version": "1.0.0",
+  "version": "2.0.0-rc.0",
   "scope": "@porsche-design-system",
   "private": true,
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -40,7 +40,7 @@
     "build:cdn": "rollup -c rollup.config.cdn.js",
     "build:package": "ts-node --project 'tsconfig.node.json' './scripts/package.ts'",
     "build:www": "mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
-    "partial": "partial=$(node -e 'console.log(require(\"./dist\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -E -e \"s@$regex@$partial@\" public/index.html | tee public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
+    "partial": "partial=$(node -e 'console.log(require(\"./dist\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./www"
