@@ -8,11 +8,11 @@ const updateContent = (oldContent: string, newContent: string): string => {
 ${newContent}`;
 };
 
-type ScriptName = 'init' | 'init-banner' | 'init-overlay';
+type ScriptName = 'init-banner' | 'init-overlay';
 
 const getCdnScript = (name: ScriptName): string =>
   fs
-    .readFileSync(path.normalize(`./cdn/${name}.min.${version}.js`), 'utf8')
+    .readFileSync(path.normalize(`./tmp/${name}.min.${version}.js`), 'utf8')
     .replace(version, '${version}') // make hardcoded version dynamic
     .replace(/\\/g, '\\\\') // double escape is needed for output
     .replace(/^\s+|\s+$/g, ''); // replace new line at end
@@ -21,7 +21,7 @@ const generatePartials = async (): Promise<void> => {
   const targetFile = path.normalize('./src/index.ts');
   const oldContent = fs.readFileSync(targetFile, 'utf8');
 
-  const scripts: ScriptName[] = ['init', 'init-banner', 'init-overlay'];
+  const scripts: ScriptName[] = ['init-banner', 'init-overlay'];
   const newContent = scripts
     .map((script) => {
       let partialNameSuffix = script.replace(/init-?/, '');
