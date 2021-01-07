@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.0] - 2021-01-07
+
 #### Removed
 – Universal `include()` script, use `includeBanner()` or `includeOverlay()` instead
 
