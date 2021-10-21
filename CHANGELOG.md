@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This major release is relevant as of `Porsche Design System v2.3.0`
 
 #### Changed
-- Feature detection of `includeOverlay()` to check for all Browser technologies used by Porsche Design System
+- Extended feature detection of `includeOverlay()` with `ResizeObserver`, `IntersectionObserver` and `MutationObserver` to 
+cover all Browser technologies used by the Porsche Design System
 
 ### [2.0.0] - 2021-01-07
 
