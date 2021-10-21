@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [3.0.0] - 2021-10-21
+
+This major release is relevant as of `Porsche Design System v2.3.0`
+
+#### Changed
+- Extended feature detection of `includeOverlay()` with `ResizeObserver`, `IntersectionObserver` and `MutationObserver` to cover **critical** browser technologies used by the Porsche Design System
+
 ### [2.0.0] - 2021-01-07
 
 ### [2.0.0-rc.1] - 2021-01-07
