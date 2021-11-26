@@ -9,5 +9,5 @@ export const isIEorEdgeHTML = (): boolean => {
 
 // TODO: extend array if new technologies are used
 export const supportsUsedPDSTechnologies = (): boolean => {
-  return !['ResizeObserver', 'IntersectionObserver', 'MutationObserver', 'customElements'].some((x) => !(x in window));
+  return !['IntersectionObserver', 'MutationObserver', 'customElements'].some((x) => !(x in window));
 };
