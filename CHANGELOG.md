@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [4.0.0] - 2021-11-30
+
+This major release is relevant as of `Porsche Design System v2.7.0`
+
+#### Changed
+- Remove `ResizeObserver` requirement 
+
 ### [3.0.0] - 2021-10-21
 
 This major release is relevant as of `Porsche Design System v2.3.0`
