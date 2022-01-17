@@ -1,3 +1,5 @@
+import { addMarkup, applyLogic, getLang, Locales } from '../scripts/utils';
+
 ((): void => {
   const ID = 'pds-browser-notification-overlay';
 
@@ -6,33 +8,8 @@
   const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
   const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
 
-  type Lang =
-    | 'de'
-    | 'ru'
-    | 'fr'
-    | 'en'
-    | 'it'
-    | 'pt'
-    | 'es'
-    | 'ja'
-    | 'ko'
-    | 'zh'
-    | 'nl'
-    | 'pl'
-    | 'cs'
-    | 'da'
-    | 'et'
-    | 'fi'
-    | 'lt'
-    | 'lv'
-    | 'no'
-    | 'sl'
-    | 'sv'
-    | 'tr'
-    | 'uk';
-
   // prettier-ignore
-  const locales: { [key in Lang]: { title: string; content: string } } = {
+  const locales: Locales = {
     de: {
       title: 'Zeit für ein kleines Update',
       content: `Der Browser, den Sie verwenden, wird nicht mehr unterstützt.<br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
@@ -127,31 +104,14 @@
     },
   };
 
-  const getLang = (): Lang => {
-    const htmlLang = document.getElementsByTagName('html')[0].getAttribute('lang');
-    const locale = htmlLang?.slice(0, 2) as Lang;
-    return locale && locale in locales ? locale : 'en';
-  };
-
   const getContent = (): string => {
-    const { title, content } = locales[getLang()];
+    const { title, content } = locales[getLang(locales)];
     return `<strong>${title}</strong><p>${content.replace(
       '<br>',
       '<br class=show--at-768-ilb>'
     )}</p><div class=show--at-768>${[chrome, firefox, edge]
       .map((link) => link.replace('>', '><i></i>'))
       .join('')}</div>`;
-  };
-
-  const addMarkup = (html: string): void => {
-    const markup = document.createElement('div');
-    markup.id = ID;
-    markup.innerHTML = html;
-    document.body.appendChild(markup);
-  };
-
-  const applyLogic = (): void => {
-    document.body.style.overflow = 'hidden';
   };
 
   /* Auto Generated Start */
@@ -163,6 +123,6 @@
 
   /* Auto Generated End */
 
-  addMarkup(html);
+  addMarkup(html, ID);
   applyLogic();
 })();

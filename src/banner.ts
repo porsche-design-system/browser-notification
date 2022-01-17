@@ -1,3 +1,5 @@
+import { Lang } from '../scripts/utils';
+
 ((): void => {
   const ID = 'pds-browser-notification-banner';
 
@@ -5,31 +7,6 @@
   const chrome = `<a href=https://www.google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;
   const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
   const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
-
-  type Lang =
-    | 'de'
-    | 'ru'
-    | 'fr'
-    | 'en'
-    | 'it'
-    | 'pt'
-    | 'es'
-    | 'ja'
-    | 'ko'
-    | 'zh'
-    | 'nl'
-    | 'pl'
-    | 'cs'
-    | 'da'
-    | 'et'
-    | 'fi'
-    | 'lt'
-    | 'lv'
-    | 'no'
-    | 'sl'
-    | 'sv'
-    | 'tr'
-    | 'uk';
 
   // prettier-ignore
   const locales: { [key in Lang]: string } = {

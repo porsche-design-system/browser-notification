@@ -1,33 +1,10 @@
+import { addMarkup, applyLogic, getLang, Lang, Locales } from '../scripts/utils';
+
 ((): void => {
   const ID = 'pds-cookie-notification-overlay';
 
-  type Lang =
-    | 'de'
-    | 'ru'
-    | 'fr'
-    | 'en'
-    | 'it'
-    | 'pt'
-    | 'es'
-    | 'ja'
-    | 'ko'
-    | 'zh'
-    | 'nl'
-    | 'pl'
-    | 'cs'
-    | 'da'
-    | 'et'
-    | 'fi'
-    | 'lt'
-    | 'lv'
-    | 'no'
-    | 'sl'
-    | 'sv'
-    | 'tr'
-    | 'uk';
-
   // prettier-ignore
-  const locales: { [key in Lang]: { title: string; content: string } } = {
+  const locales: Locales = {
     de: {
       title: "Aktivieren Sie Cookies, um diese Seite zu nutzen",
       content: 'Cookies sind in Ihrem Browser deaktiviert. Um auf diese Site zuzugreifen, müssen Sie in den Browsereinstellungen Cookies aktivieren, das Fenster schließen und diese Site erneut öffnen.',
@@ -122,26 +99,9 @@
     },
   };
 
-  const getLang = (): Lang => {
-    const htmlLang = document.getElementsByTagName('html')[0].getAttribute('lang');
-    const locale = htmlLang?.slice(0, 2) as Lang;
-    return locale && locale in locales ? locale : 'en';
-  };
-
   const getContent = (): string => {
-    const { title, content } = locales[getLang()];
+    const { title, content } = locales[getLang(locales)];
     return `<strong>${title}</strong><p>${content}</p>`;
-  };
-
-  const addMarkup = (html: string): void => {
-    const markup = document.createElement('div');
-    markup.id = ID;
-    markup.innerHTML = html;
-    document.body.appendChild(markup);
-  };
-
-  const applyLogic = (): void => {
-    document.body.style.overflow = 'hidden';
   };
 
   /* Auto Generated Start */
@@ -153,6 +113,6 @@
 
   /* Auto Generated End */
 
-  addMarkup(html);
+  addMarkup(html, ID);
   applyLogic();
 })();
