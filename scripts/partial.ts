@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { version } from '../package.json';
+import { pascalCase } from 'change-case';
 
 const updateContent = (oldContent: string, newContent: string): string => {
   const separator = '/* Auto Generated Below */';
@@ -8,7 +9,7 @@ const updateContent = (oldContent: string, newContent: string): string => {
 ${newContent}`;
 };
 
-type ScriptName = 'init-banner' | 'init-overlay';
+type ScriptName = 'init-banner' | 'init-overlay' | 'init-cookie-overlay';
 
 const getCdnScript = (name: ScriptName): string =>
   fs
@@ -21,12 +22,12 @@ const generatePartials = async (): Promise<void> => {
   const targetFile = path.normalize('./src/index.ts');
   const oldContent = fs.readFileSync(targetFile, 'utf8');
 
-  const scripts: ScriptName[] = ['init-banner', 'init-overlay'];
+  const scripts: ScriptName[] = ['init-banner', 'init-overlay', 'init-cookie-overlay'];
   const newContent = scripts
     .map((script) => {
       let partialNameSuffix = script.replace(/init-?/, '');
       if (partialNameSuffix.length > 0) {
-        partialNameSuffix = partialNameSuffix[0].toUpperCase() + partialNameSuffix.slice(1);
+        partialNameSuffix = pascalCase(partialNameSuffix);
       }
       return `// prettier-ignore
 export const include${partialNameSuffix} = (): string => \`<script>${getCdnScript(script)}</script>\`;`;
