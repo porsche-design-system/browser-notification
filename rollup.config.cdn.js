@@ -20,10 +20,10 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
-    input: 'src/init-overlay.ts',
+    input: 'src/init-browser-overlay.ts',
     output: {
       ...outputConfig,
-      file: `./tmp/init-overlay.min.${pkg.version}.js`,
+      file: `./tmp/init-browser-overlay.min.${pkg.version}.js`,
     },
     plugins: [typescript(), json(), terser()],
   },
@@ -44,10 +44,10 @@ export default [
     plugins: [typescript(), terser()],
   },
   {
-    input: 'src/overlay.ts',
+    input: 'src/browser-overlay.ts',
     output: {
       ...outputConfig,
-      file: `./cdn/overlay.min.${pkg.version}.js`,
+      file: `./cdn/browser-overlay.min.${pkg.version}.js`,
     },
     plugins: [typescript(), terser()],
   },

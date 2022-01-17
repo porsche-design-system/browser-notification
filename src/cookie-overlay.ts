@@ -1,5 +1,5 @@
 ((): void => {
-  const ID = 'pds-browser-notification-cookie-overlay';
+  const ID = 'pds-cookie-notification-overlay';
 
   type Lang =
     | 'de'
