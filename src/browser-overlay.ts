@@ -1,4 +1,5 @@
-import { addMarkup, applyLogic, getLang, Locales } from '../scripts/utils';
+import { addMarkup, applyLogic, getLang } from './utils';
+import { Locales } from './utils';
 
 ((): void => {
   const ID = 'pds-browser-notification-overlay';

@@ -1,4 +1,4 @@
-import { Lang } from '../scripts/utils';
+import type { Lang } from './utils';
 
 ((): void => {
   const ID = 'pds-browser-notification-banner';

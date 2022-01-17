@@ -1,4 +1,5 @@
-import { addMarkup, applyLogic, getLang, Lang, Locales } from '../scripts/utils';
+import { addMarkup, applyLogic, getLang } from './utils';
+import type { Locales } from './utils';
 
 ((): void => {
   const ID = 'pds-cookie-notification-overlay';
