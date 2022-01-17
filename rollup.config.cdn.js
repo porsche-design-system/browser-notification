@@ -28,6 +28,14 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
+    input: 'src/init-cookie-overlay.ts',
+    output: {
+      ...outputConfig,
+      file: `./tmp/init-cookie-overlay.min.${pkg.version}.js`,
+    },
+    plugins: [typescript(), json(), terser()],
+  },
+  {
     input: 'src/banner.ts',
     output: {
       ...outputConfig,
@@ -40,6 +48,14 @@ export default [
     output: {
       ...outputConfig,
       file: `./cdn/overlay.min.${pkg.version}.js`,
+    },
+    plugins: [typescript(), terser()],
+  },
+  {
+    input: 'src/cookie-overlay.ts',
+    output: {
+      ...outputConfig,
+      file: `./cdn/cookie-overlay.min.${pkg.version}.js`,
     },
     plugins: [typescript(), terser()],
   },
