@@ -11,6 +11,22 @@ const generateCssAndHtml = async (overlayType: string): Promise<void> => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `
   // prettier-ignore
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang')?.slice(0, 2) as Lang;
+  const locale = lang in locales ? lang : 'en';
+  
+  const { title, content } = locales[locale];
+  const htmlMarkup = \`<strong>\${title\}</strong><p>${
+    isBrowser
+      ? `\${content.replace(
+      '<br>',
+      '<br class=show--at-768-ilb>'
+  )}</p><div class=show--at-768>\${[chrome, firefox, edge]
+      .map((link) => link.replace('>', '><i></i>'))
+      .join('')}</div>\``
+      : `\${content}</p>\``
+  };
+  
+  // prettier-ignore
   const css = \`${minifyCSS(`
   #ID {
     position: fixed;
@@ -148,7 +164,14 @@ ${
     CONTENT
   </div>`)
     .replace('STYLE', '<style>${css}</style>')
-    .replace('CONTENT', '${getContent()}')}\`;
+    .replace('CONTENT', '${htmlMarkup}')}\`;
+   
+  const bodyMarkup = document.createElement('div');
+  bodyMarkup.id = ID;
+  bodyMarkup.innerHTML = html;
+  document.body.appendChild(bodyMarkup);
+      
+  document.body.style.overflow = 'hidden';
 `;
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
