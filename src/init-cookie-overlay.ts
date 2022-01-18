@@ -1,4 +1,4 @@
-import { CDN_PATH, hasCookiesEnables, supportsUsedPDSTechnologies } from './init-helpers';
+import { CDN_PATH, hasCookiesEnables } from './init-helpers';
 import { version } from '../package.json';
 
 if (!hasCookiesEnables()) {
