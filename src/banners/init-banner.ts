@@ -1,5 +1,6 @@
-import { version } from '../package.json';
-import { CDN_PATH, isIEorEdgeHTML } from './init-helpers';
+import { version } from '../../package.json';
+import { isIEorEdgeHTML } from './banner-helpers';
+import { CDN_PATH } from '../utils';
 
 if (isIEorEdgeHTML()) {
   const script = document.createElement('script');

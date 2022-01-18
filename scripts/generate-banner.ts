@@ -3,7 +3,7 @@ import * as path from 'path';
 import { minifyHTML, minifyCSS, updateContent } from './utils';
 
 const generateCssAndHtml = async (): Promise<void> => {
-  const targetFile = path.normalize('./src/banner.ts');
+  const targetFile = path.normalize('./src/banners/banner.ts');
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `

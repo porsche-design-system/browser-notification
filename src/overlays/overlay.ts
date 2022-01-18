@@ -1,4 +1,4 @@
-import type { Lang, Locales } from './utils';
+import type { Lang, Locales } from '../utils';
 
 ((): void => {
   const ID = 'pds-browser-notification-overlay';

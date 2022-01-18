@@ -1,5 +1,6 @@
-import { version } from '../package.json';
-import { CDN_PATH, supportsUsedPDSTechnologies } from './init-helpers';
+import { version } from '../../package.json';
+import { supportsUsedPDSTechnologies } from './overlay-helpers';
+import { CDN_PATH } from '../utils';
 
 if (!supportsUsedPDSTechnologies()) {
   const script = document.createElement('script');

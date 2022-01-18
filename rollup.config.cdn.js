@@ -12,7 +12,7 @@ const outputConfig = {
 
 export default [
   {
-    input: 'src/init-banner.ts',
+    input: 'src/banners/init-banner.ts',
     output: {
       ...outputConfig,
       file: `./tmp/init-banner.min.${pkg.version}.js`,
@@ -20,7 +20,7 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
-    input: 'src/init-overlay.ts',
+    input: 'src/overlays/init-overlay.ts',
     output: {
       ...outputConfig,
       file: `./tmp/init-overlay.min.${pkg.version}.js`,
@@ -28,7 +28,7 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
-    input: 'src/init-cookie-overlay.ts',
+    input: 'src/overlays/init-cookie-overlay.ts',
     output: {
       ...outputConfig,
       file: `./tmp/init-cookie-overlay.min.${pkg.version}.js`,
@@ -36,7 +36,7 @@ export default [
     plugins: [typescript(), json(), terser()],
   },
   {
-    input: 'src/banner.ts',
+    input: 'src/banners/banner.ts',
     output: {
       ...outputConfig,
       file: `./cdn/banner.min.${pkg.version}.js`,
@@ -44,7 +44,7 @@ export default [
     plugins: [typescript(), terser()],
   },
   {
-    input: 'src/overlay.ts',
+    input: 'src/overlays/overlay.ts',
     output: {
       ...outputConfig,
       file: `./cdn/overlay.min.${pkg.version}.js`,
@@ -52,7 +52,7 @@ export default [
     plugins: [typescript(), terser()],
   },
   {
-    input: 'src/cookie-overlay.ts',
+    input: 'src/overlays/cookie-overlay.ts',
     output: {
       ...outputConfig,
       file: `./cdn/cookie-overlay.min.${pkg.version}.js`,

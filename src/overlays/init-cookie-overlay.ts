@@ -1,5 +1,6 @@
-import { CDN_PATH, hasCookiesEnables } from './init-helpers';
-import { version } from '../package.json';
+import { hasCookiesEnables } from './overlay-helpers';
+import { version } from '../../package.json';
+import { CDN_PATH } from '../utils';
 
 if (!hasCookiesEnables()) {
   const script = document.createElement('script');
