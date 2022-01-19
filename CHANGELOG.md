@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Function `includeCookieOverlay()` to display notification overlay when cookies are disabled
+
 ### [4.0.0] - 2021-11-30
 
 This major release is relevant as of `Porsche Design System v2.7.0`
