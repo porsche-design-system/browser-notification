@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { minifyHTML, minifyCSS, updateContent } from './utils';
 
-const generateCssAndHtml = async (): Promise<void> => {
+const generateCssAndHtml = (): void => {
   const targetFile = path.normalize('./src/banners/banner.ts');
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
@@ -54,7 +54,7 @@ const generateCssAndHtml = async (): Promise<void> => {
     padding: 0 1.5rem 0 1rem;
     max-width: 59.25rem;
     font-size: 1rem;
-    font-family: PorscheNext-Regular, "Arial Narrow", Arial, sans-serif;
+    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-weight: normal;
     line-height: 1.5;
     color: #000;
@@ -127,9 +127,11 @@ const generateCssAndHtml = async (): Promise<void> => {
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
-(async (): Promise<void> => {
-  await generateCssAndHtml().catch((e) => {
+((): void => {
+  try {
+    generateCssAndHtml();
+  } catch (e) {
     console.error(e);
     process.exit(1);
-  });
+  }
 })();
