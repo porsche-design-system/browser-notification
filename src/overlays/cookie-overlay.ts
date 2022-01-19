@@ -6,8 +6,8 @@ import type { Lang, Locales } from '../utils';
   // prettier-ignore
   const locales: Locales = {
     de: {
-      title: "Aktivieren Sie Cookies, um diese Seite zu nutzen",
-      content: 'Cookies sind in Ihrem Browser deaktiviert. Um auf diese Site zuzugreifen, müssen Sie in den Browsereinstellungen Cookies aktivieren, das Fenster schließen und diese Site erneut öffnen.',
+      title: "Aktivieren Sie Browsercookies, um diese Webseite zu nutzen",
+      content: 'Cookies sind in Ihrem Browser deaktiviert. Um auf diese Seite zuzugreifen, müssen Sie in den Browsereinstellungen Cookies aktivieren, das Fenster schließen und diese Webseite erneut öffnen.',
     },
     ru: {
       title: "Активируйте файлы cookie, чтобы использовать этот сайт",
@@ -18,8 +18,8 @@ import type { Lang, Locales } from '../utils';
       content: "Les cookies sont désactivés dans votre navigateur. Pour accéder à ce site, il est nécessaire d'activer les cookies dans les paramètres du navigateur, de fermer la fenêtre et d'ouvrir à nouveau ce site.",
     },
     en: {
-      title: "Please activate your browser cookies",
-      content: "Cookies are disabled in your browser. To access this site it is necessary to activate cookies in the browsers settings, close the window and open this site again.",
+      title: "Activate browser cookies to use this website",
+      content: "Cookies are disabled in your browser. To access this website it is necessary to activate cookies in the browsers settings, close the window and open this site again.",
     },
     it: {
       title: "Attiva i cookie per utilizzare questo sito",
@@ -108,7 +108,7 @@ import type { Lang, Locales } from '../utils';
   const htmlMarkup = `<strong>${title}</strong><p>${content}</p>`;
   
   // prettier-ignore
-  const css = `#ID{position:fixed;display:flex;justify-content:center;margin:0;padding:1rem 7vw;top:0;bottom:0;left:0;right:0;box-sizing:border-box;z-index:999999;background:#fff}#ID>div{position:relative;width:100%;max-width:96rem;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:1rem;font-family:PorscheNext,"Arial Narrow",Arial,sans-serif;font-weight:400;line-height:1.5;color:#000}#ID>div svg{width:5rem;height:5rem;margin:0 0 .5rem;padding:0;fill:#ff9b00}#ID>div strong{display:block;margin:0 0 1rem;font-size:1.5rem}#ID>div>p{margin:.5rem 0 0;max-width:59.25rem;width:100%}#ID .show--at-768,#ID .show--at-768-ilb{display:none}@media only screen and (min-width:768px){#ID .show--at-768{display:block}#ID .show--at-768-ilb{display:inline-block}#ID>div>svg{width:8.5rem;height:8.5rem;margin:0 0 1rem}#ID>div>strong{font-size:3rem}#ID>div>div{margin:2rem 0 0}}`.replace(/#ID/g, `#${ID}`);
+  const css = `#ID{position:fixed;display:flex;justify-content:center;margin:0;padding:1rem 7vw;top:0;bottom:0;left:0;right:0;box-sizing:border-box;z-index:999999;background:#fff}#ID>div{position:relative;width:100%;max-width:96rem;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:1rem;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;line-height:1.5;color:#000}#ID>div svg{width:5rem;height:5rem;margin:0 0 .5rem;padding:0;fill:#ff9b00}#ID>div strong{display:block;margin:0 0 1rem;font-size:1.5rem}#ID>div>p{margin:.5rem 0 0;max-width:59.25rem;width:100%}#ID .show--at-768,#ID .show--at-768-ilb{display:none}@media only screen and (min-width:768px){#ID .show--at-768{display:block}#ID .show--at-768-ilb{display:inline-block}#ID>div>svg{width:8.5rem;height:8.5rem;margin:0 0 1rem}#ID>div>strong{font-size:3rem}#ID>div>div{margin:2rem 0 0}}`.replace(/#ID/g, `#${ID}`);
   // prettier-ignore
   const html = `<div><style>${css}</style><svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 24 24" width=100% height=100% focusable=false><path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/><path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/></svg>${htmlMarkup}</div>`;
    
