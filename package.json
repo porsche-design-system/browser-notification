@@ -31,8 +31,8 @@
   "scripts": {
     "start": "yarn build && http-server ./www -p 4201",
     "build": "yarn clean:build && yarn build:generate && yarn build:cdn && yarn build:partial && yarn build:lib && yarn build:package && yarn build:www",
-    "build:generate": "yarn build:generate:banner && yarn build:generate:overlays",
-    "build:generate:banner": "ts-node --project 'tsconfig.node.json' './scripts/generate-banner.ts'",
+    "build:generate": "yarn build:generate:banners && yarn build:generate:overlays",
+    "build:generate:banners": "ts-node --project 'tsconfig.node.json' './scripts/generate-banners.ts'",
     "build:generate:overlays": "ts-node --project 'tsconfig.node.json' './scripts/generate-overlays.ts'",
     "build:partial": "ts-node --project 'tsconfig.node.json' './scripts/partial.ts'",
     "build:lib": "rollup -c rollup.config.js",
