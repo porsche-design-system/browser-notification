@@ -7,4 +7,4 @@ export const includeBanner = (): string => `<script>!function(){var e,n;if(e=/\\
 // prettier-ignore
 export const includeOverlay = (): string => `<script>!function(){if(["IntersectionObserver","MutationObserver","customElements"].some((function(e){return!(e in window)}))){var e=document.createElement("script");e.src="https://cdn.ui.porsche.com/browser-notification/overlay.min.${version}.js",document.body.appendChild(e)}}();</script>`;
 // prettier-ignore
-export const includeCookieOverlay = (): string => `<script>!function(){if(!window.navigator.cookieEnabled&&!navigator.cookieEnabled){var o=document.createElement("script");o.src="https://cdn.ui.porsche.com/browser-notification/cookie-overlay.min.${version}.js",document.body.appendChild(o)}}();</script>`;
+export const includeCookieOverlay = (): string => `<script>!function(){if(!(window.navigator||navigator).cookieEnabled){var o=document.createElement("script");o.src="https://cdn.ui.porsche.com/browser-notification/cookie-overlay.min.${version}.js",document.body.appendChild(o)}}();</script>`;
