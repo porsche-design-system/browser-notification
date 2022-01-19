@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [4.1.0] - 2022-01-19
+
 #### Added
 - Function `includeCookieOverlay()` to display notification overlay when cookies are disabled
 
