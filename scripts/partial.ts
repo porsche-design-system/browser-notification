@@ -18,7 +18,7 @@ const getCdnScript = (name: ScriptName): string =>
     .replace(/\\/g, '\\\\') // double escape is needed for output
     .replace(/^\s+|\s+$/g, ''); // replace new line at end
 
-const generatePartials = async (): Promise<void> => {
+const generatePartials = (): void => {
   const targetFile = path.normalize('./src/index.ts');
   const oldContent = fs.readFileSync(targetFile, 'utf8');
 
@@ -37,9 +37,11 @@ export const include${partialNameSuffix} = (): string => \`<script>${getCdnScrip
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
-(async (): Promise<void> => {
-  await generatePartials().catch((e) => {
+((): void => {
+  try {
+    generatePartials();
+  } catch (e) {
     console.error(e);
     process.exit(1);
-  });
+  }
 })();
