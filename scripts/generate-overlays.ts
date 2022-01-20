@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { minifyHTML, minifyCSS, updateContent } from './utils';
 import { OVERLAY_TYPES } from '../src/utils';
-import type { OverlayTypes } from '../src/utils';
+import type { OverlayType } from '../src/utils';
 
-const generateCssAndHtml = (overlayType: OverlayTypes): void => {
+const generateCssAndHtml = (overlayType: OverlayType): void => {
   const isBrowser = overlayType === 'browser';
   const targetFile = path.normalize(`./src/overlays/${isBrowser ? '' : 'cookie-'}overlay.ts`);
 
