@@ -6,7 +6,7 @@ import type { Lang, Locales } from '../utils';
   // prettier-ignore
   const locales: Locales = {
     de: {
-      title: "Aktivieren Sie Browsercookies, um diese Webseite zu nutzen",
+      title: "Aktivieren Sie Browser Cookies, um diese Webseite zu nutzen",
       content: 'Cookies sind in Ihrem Browser deaktiviert. Um auf diese Seite zuzugreifen, müssen Sie in den Browsereinstellungen Cookies aktivieren, das Fenster schließen und diese Webseite erneut öffnen.',
     },
     ru: {
