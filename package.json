@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/browser-notification",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "scope": "@porsche-design-system",
   "private": true,
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -31,9 +31,9 @@
   "scripts": {
     "start": "yarn build && http-server ./www -p 4201",
     "build": "yarn clean:build && yarn build:generate && yarn build:cdn && yarn build:partial && yarn build:lib && yarn build:package && yarn build:www",
-    "build:generate": "yarn build:generate:banner && yarn build:generate:overlay",
-    "build:generate:banner": "ts-node --project 'tsconfig.node.json' './scripts/generate-banner.ts'",
-    "build:generate:overlay": "ts-node --project 'tsconfig.node.json' './scripts/generate-overlay.ts'",
+    "build:generate": "yarn build:generate:banners && yarn build:generate:overlays",
+    "build:generate:banners": "ts-node --project 'tsconfig.node.json' './scripts/generate-banners.ts'",
+    "build:generate:overlays": "ts-node --project 'tsconfig.node.json' './scripts/generate-overlays.ts'",
     "build:partial": "ts-node --project 'tsconfig.node.json' './scripts/partial.ts'",
     "build:lib": "rollup -c rollup.config.js",
     "build:cdn": "rollup -c rollup.config.cdn.js",
@@ -50,6 +50,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@types/html-minifier": "^4.0.0",
+    "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
     "http-server": "^0.12.3",
     "prettier": "^2.2.1",
