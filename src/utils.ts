@@ -29,4 +29,4 @@ export type Locales = { [key in Lang]: { title: string; content: string } };
 export const CDN_PATH = 'https://cdn.ui.porsche.com/browser-notification';
 
 export const OVERLAY_TYPES = ['cookie', 'browser'] as const;
-export type OverlayTypes = typeof OVERLAY_TYPES[number];
+export type OverlayType = typeof OVERLAY_TYPES[number];
