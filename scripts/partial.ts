@@ -37,11 +37,4 @@ export const include${partialNameSuffix} = (): string => \`<script>${getCdnScrip
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
-((): void => {
-  try {
-    generatePartials();
-  } catch (e) {
-    console.error(e);
-    process.exit(1);
-  }
-})();
+generatePartials();

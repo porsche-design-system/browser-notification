@@ -176,11 +176,4 @@ ${
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
-((): void => {
-  try {
-    OVERLAY_TYPES.forEach((overlayType) => generateCssAndHtml(overlayType));
-  } catch (e) {
-    console.error(e);
-    process.exit(1);
-  }
-})();
+OVERLAY_TYPES.forEach((overlayType) => generateCssAndHtml(overlayType));

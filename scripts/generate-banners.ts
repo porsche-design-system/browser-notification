@@ -127,11 +127,4 @@ const generateCssAndHtml = (): void => {
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
-((): void => {
-  try {
-    generateCssAndHtml();
-  } catch (e) {
-    console.error(e);
-    process.exit(1);
-  }
-})();
+generateCssAndHtml();
