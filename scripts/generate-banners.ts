@@ -54,7 +54,7 @@ const generateCssAndHtml = (): void => {
     padding: 0 1.5rem 0 1rem;
     max-width: 59.25rem;
     font-size: 1rem;
-    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-family: "Porsche Next","Arial Narrow",Arial,"Heiti SC",SimHei,sans-serif;
     font-weight: normal;
     line-height: 1.5;
     color: #000;
