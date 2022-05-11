@@ -5,6 +5,8 @@ on:
       - issue/*
       - release/*
 name: 'Porsche Browser Notification Banner'
+env:
+  DOCKER_IMAGE: ghcr.io/porscheui/porsche-browser-notification-banner/node:16.14.2-stretch-slim
 jobs:
   package:
     name: 'Package'
@@ -23,6 +25,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.DOCKER_IMAGE }}
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -58,6 +62,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.DOCKER_IMAGE }}
       - name: 'Restore CDN Artifacts'
         uses: actions/download-artifact@v2
         with:
@@ -85,6 +91,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.DOCKER_IMAGE }}
       - name: 'Restore NPM Artifacts'
         uses: actions/download-artifact@v2
         with:

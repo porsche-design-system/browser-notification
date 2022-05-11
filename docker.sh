@@ -9,7 +9,6 @@ export RUN_UID="$(id -u)"
 export RUN_GID="$(id -g)"
 export COMPOSE_PROJECT_NAME="porsche-browser-notification-banner"
 
-docker pull ghcr.io/porscheui/porsche-browser-notification-banner/node:16.14.2-stretch-slim
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" build
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" run --rm change-volume-owner
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" run --service-ports --rm porsche-browser-notification-banner "${@}"
