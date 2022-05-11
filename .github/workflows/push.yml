@@ -52,7 +52,7 @@ jobs:
   cdn-deployment:
     name: 'CDN Deployment'
     needs:
-      - package
+      - build
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
