@@ -28,6 +28,7 @@ Stand-alone self invoking JS snippet to show a Notification Banner or Overlay if
 _Note: `./docker.sh run-install` should be executed after every pull._
 
 ### Setup prettier
+
 1. Go to Webstorm `Preferences`
 1. Click on the Plugins tab and search for `prettier`
 1. Install prettier
