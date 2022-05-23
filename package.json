@@ -1,7 +1,7 @@
 {
   "name": "@porsche-design-system/browser-notification",
   "version": "4.1.1",
-  "description": "Provides different kind of browser notifications to be shown in case of unsupported browser features or disabled cookie support.",
+  "description": "Stand-alone self invoking JS snippet to show a notification in case of unsupported browser features are detected or\nbrowser cookies are disabled.",
   "keywords": [
     "porsche",
     "browser",
