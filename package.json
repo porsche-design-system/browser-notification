@@ -26,7 +26,7 @@
     "build:partial": "ts-node --project 'tsconfig.node.json' './scripts/partial.ts'",
     "build:lib": "rollup -c rollup.config.js",
     "build:cdn": "rollup -c rollup.config.cdn.js",
-    "postbuild:package": "yarn partial",
+    "postbuild:lib": "yarn partial",
     "build:www": "mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
     "partial": "partial=$(node -e 'console.log(require(\"./dist\").includeBanner().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*(banner|overlay)\\.min.*<\\/script>' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -36,18 +36,18 @@
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-typescript": "^6.0.0",
-    "@types/html-minifier": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@types/html-minifier": "^4.0.2",
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
-    "http-server": "^0.12.3",
-    "prettier": "^2.2.1",
-    "rollup": "^2.28.2",
+    "http-server": "^14.1.0",
+    "prettier": "^2.6.2",
+    "rollup": "^2.74.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "rollup-plugin-terser": "^7.0.2",
-    "ts-node": "^9.0.0",
-    "tslib": "^2.0.1",
-    "typescript": "^4.0.3"
+    "ts-node": "^10.8.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
   }
 }
