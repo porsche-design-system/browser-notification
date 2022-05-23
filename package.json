@@ -1,16 +1,6 @@
 {
   "name": "@porsche-design-system/browser-notification",
   "version": "4.1.1",
-  "scope": "@porsche-design-system",
-  "private": true,
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Bernd Hacker <bernd.hacker@mhp.com>"
-  ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "Browser Notification Banner to show end of support of IE11",
   "keywords": [
     "Porsche",
@@ -19,8 +9,11 @@
     "IE11",
     "Edge"
   ],
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "homepage": "https://designsystem.porsche.com",
-  "prettier": "@porsche-design-system/prettier-config",
+  "private": true,
   "scripts": {
     "start": "yarn build && http-server ./www -p 4201",
     "build": "yarn clean:build && yarn build:generate && yarn build:cdn && yarn build:partial && yarn build:lib && yarn build:www",
