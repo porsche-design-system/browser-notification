@@ -1,17 +1,20 @@
 {
   "name": "@porsche-design-system/browser-notification",
   "version": "4.1.1",
-  "description": "Browser Notification Banner to show end of support of IE11",
+  "description": "Provides different kind of browser notifications to be shown in case of unsupported browser features or disabled cookie support.",
   "keywords": [
-    "Porsche",
-    "Notification",
-    "Banner",
-    "IE11",
-    "Edge"
+    "porsche",
+    "browser",
+    "notification",
+    "feature",
+    "detection",
+    "cookie",
+    "support",
+    "ie11"
   ],
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
+  "license": "MIT",
   "homepage": "https://designsystem.porsche.com",
   "private": true,
   "scripts": {
