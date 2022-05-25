@@ -6,7 +6,7 @@ on:
       - release/*
 name: 'Porsche Browser Notification Banner'
 env:
-  DOCKER_IMAGE: ghcr.io/porscheui/porsche-browser-notification-banner/node:16.14.2-stretch-slim
+  DOCKER_IMAGE: ghcr.io/porscheui/browser-notification/node:16.14.2-stretch-slim
 jobs:
   build:
     name: 'Build'

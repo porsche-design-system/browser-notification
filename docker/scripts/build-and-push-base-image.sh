@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REGISTRY=ghcr.io/porscheui/porsche-browser-notification-banner
+REGISTRY=ghcr.io/porscheui/browser-notification
 IMAGE=node
 TAG=16.14.2-stretch-slim
 

@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   porsche-browser-notification-banner:
-    image: ghcr.io/porscheui/porsche-browser-notification-banner/node:16.14.2-stretch-slim
+    image: ghcr.io/porscheui/browser-notification/node:16.14.2-stretch-slim
     working_dir: /opt/porsche-browser-notification-banner-repository
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -16,7 +16,7 @@ services:
       - home:/home/porsche-browser-notification-banner
       - node-modules:/opt/porsche-browser-notification-banner-repository/node_modules
   change-volume-owner:
-    image: ghcr.io/porscheui/porsche-browser-notification-banner/node:16.14.2-stretch-slim
+    image: ghcr.io/porscheui/browser-notification/node:16.14.2-stretch-slim
     volumes:
       - home:/opt/porsche-browser-notification-banner-volumes/home
       - node-modules:/opt/porsche-browser-notification-banner-volumes/node_modules
