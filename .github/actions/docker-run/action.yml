@@ -2,4 +2,4 @@ name: Docker Run
 description: Run scripts in custom docker image
 runs:
   using: docker
-  image: ghcr.io/porscheui/porsche-browser-notification-banner/node:16.14.2-stretch-slim
+  image: ghcr.io/porscheui/browser-notification/node:16.14.2-stretch-slim
