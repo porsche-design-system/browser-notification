@@ -9,6 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [4.1.3] - 2022-06-20
+
+#### Changed
+
+- npm package is prepared for public release on [npmjs.org](https://npmjs.com)
+
 ### [4.1.2] - 2022-05-25
 
 ### [4.1.1] - 2022-01-20
