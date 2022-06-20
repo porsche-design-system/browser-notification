@@ -1,6 +1,9 @@
 on:
-  schedule:
-    - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
+  push:
+    branches:
+      - schedule
+#  schedule:
+#    - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
 name: 'OSS Review Toolkit'
 jobs:
   ort:
@@ -9,7 +12,6 @@ jobs:
     env:
       OSO_PROJECT_NAME: porsche_browser_notification
       OSO_AWS_ECR_REGISTRY: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
-      PDS_DOCKER_IMAGE: ghcr.io/porscheui/browser-notification/node:16.14.2-stretch-slim
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
@@ -25,15 +27,13 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
+        uses: ./docker/node/
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker-run
+        uses: ./docker/node/
         with:
           entrypoint: run-build
       - name: "Login to AWS ECR"
