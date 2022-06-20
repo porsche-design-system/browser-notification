@@ -21,6 +21,7 @@ export default [
       typescript({
         declaration: true,
         declarationDir: 'dist/types',
+        rootDir: 'src',
       }),
       json(),
     ],
